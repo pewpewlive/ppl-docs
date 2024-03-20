@@ -1,0 +1,61 @@
+---
+sidebar_position: 1
+---
+
+import FxConverter from "../../src/components/DocsInteractivity/fx-converter"
+
+# Types
+
+## int
+
+Stores integers. Used for many things, including durations and colors.
+Durations represents a number of game ticks. There are 30 game ticks per seconds. For example, a duration of 45 ticks represents 1.5 seconds.
+Colors are stored in 32 bits in the RGBA order. For example, 0xff000080 encodes pure red (0xff0000) with an alpha value of 0x80.
+
+## FixedPoint
+
+Stores fixed point numbers.
+Used for storing and computing all the game related values that require more precision than what integer numbers can provide. That includes coordinates, angles, velocities, etc...
+This built-in type is specific to PewPew, and does not exist in other Lua interpreters, which is why it is documented more thoroughly than the other types.
+A FixedPoint constant is defined using a number followed by the fx postfix:
+
+```lua
+local a = 100fx
+```
+
+You can perform regular arithmetic operations on it (+, -, /, \*, &lt;, ==, &gt;, and, or, xor), but you can't mix FixedPoint values with non-FixedPoint values:
+
+```lua
+local a = 100fx
+local b = a / 3fx -- Ok
+local c = a / 3   -- Not ok! 3 is not a FixedPoint
+```
+
+Internally, FixedPoint numbers are implemented using dux_fixed, which uses 64 bits integers. 52 bits are used to encode the integral part, leaving 12 bits for the fractional part.
+You can initialize the fractional part by placing a '.' followed by an integer in the range \[0, 4095\]:
+
+```lua
+local a = 1fx -- Stores the value 1
+local b = 1.0fx -- Stores the value 1
+local c = 1.2048fx -- Stores the value 1.5
+local d = 1.4095fx -- Stores the value 1.9997558...
+local e = -1.4095fx -- Stores the value -1.9997558...
+local f = 1.4096fx -- Not ok! The decimal part must be less than 4096
+```
+
+Here's an interactive converter that can help understanding the format:
+
+<FxConverter />
+
+## EntityId
+
+An integer that identifies an entity. EntityIds are guaranteed to be unique: they are not reused for the duration of a game.
+
+## String
+
+Stores a sequence of characters.
+Typically used to hold text and file paths. The API only accepts strings less than 1000 bytes long.
+
+## float
+
+Stores floating point numbers. Because they make determinism hard to guarantee, floats must only be used in Lua scripts that define meshes or sounds. Although it is still technically possible to use floats in game scripts, they will eventually be forbidden.
