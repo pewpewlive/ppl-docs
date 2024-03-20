@@ -6,7 +6,16 @@ import ReactPlayer from "react-player"
 
 # 60 FPS Animation
 
-Tutorial created by [WinterNox](https://github.com/WinterNox). Check out the YouTube Video for this tutorial https://youtu.be/145kDy9nr3E
+Tutorial created by [WinterNox](https://github.com/WinterNox).
+
+### YouTube tutorial
+
+<iframe
+  src="//www.youtube.com/embed/145kDy9nr3E"
+  frameborder="0"
+  allowfullscreen
+  width="100%"
+  height="480px"></iframe>
 
 ### Mesh animations
 
@@ -211,6 +220,7 @@ The code is pretty self-explanatory. We increment the index every tick and use t
 The result should look something like this:
 
 <ReactPlayer
+  controls
   playing
   loop
   url="https://github.com/pewpewlive/ppl-utils/assets/42890752/5a2c1a1c-d079-4497-ab83-deca095ca01a"
@@ -287,6 +297,7 @@ pewpew.customizable_entity_set_flipping_meshes(id, "/dynamic/graphics.lua", mesh
 What does this exactly do? When we set flipping meshes of an entity, that entity goes over the two specified meshes in a single game tick. This means that, in the first game tick, it will have the mesh at `index 0` for half a tick and will have the mesh at `index 1` for the rest half of a tick. In the next tick, we are resetting the flipping meshes. The variable `mesh_index` now has a value of `2`. The entity now has the mesh at `index 2` for half a tick and has the mesh at `index 3` for half a tick. Notice that we have gone over 4 meshes in just 2 game ticks (2 meshes per game tick)! The way in which we have used this creates an animation that runs at 60 FPS. Now, if you **save the files and run your level**, you'll notice that it is a lot smoother than our initial animation. It is exactly twice as smooth. It might look something like this:
 
 <ReactPlayer
+  controls
   playing
   loop
   url="https://github.com/pewpewlive/ppl-utils/assets/42890752/342de310-cc7b-4b4b-8c35-5cf34d078ad0"
