@@ -14,11 +14,11 @@ If you have questions, the game's creator and many level creators are available 
 
 # Level structure
 
-A level is a directory that contains a [manifest](API_manifest) and Lua files. The Lua files fall in three categories:
+A level is a directory that contains a [manifest](file-information/manifest-files) and Lua files. The Lua files fall in three categories:
 
-- Files that describe [graphics](API_meshes).
-- Files that describe [sounds](API_sounds).
-- Files that describe the behavior of the level. They make use of the [pewpew](API_pewpew_lib) and [fmath](API_fmath_lib) libraries, which require an understanding of the [types](API_types) used.
+- Files that describe [graphics](file-information/mesh-files).
+- Files that describe [sounds](file-information/sound-files).
+- Files that describe the behavior of the level. They make use of the [pewpew](api/pewpew-library) and [fmath](api/fmath-library) libraries, which require an understanding of the [types](api/types) used.
 
 # Uploading your level
 
