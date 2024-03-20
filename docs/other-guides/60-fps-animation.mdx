@@ -2,6 +2,8 @@
 sidebar_position: 1
 ---
 
+import ReactPlayer from "react-player"
+
 # 60 FPS Animation
 
 Tutorial created by [WinterNox](https://github.com/WinterNox). Check out the YouTube Video for this tutorial https://youtu.be/145kDy9nr3E
@@ -208,7 +210,11 @@ The code is pretty self-explanatory. We increment the index every tick and use t
 
 The result should look something like this:
 
-https://github.com/pewpewlive/ppl-utils/assets/42890752/5a2c1a1c-d079-4497-ab83-deca095ca01a
+<ReactPlayer
+  playing
+  loop
+  url="https://github.com/pewpewlive/ppl-utils/assets/42890752/5a2c1a1c-d079-4497-ab83-deca095ca01a"
+/>
 
 As you can see, it is an animation. Though, this animation is running at only 30 frames per second. This is an issue. An animation running at 30 FPS will not look good with the rest of the level as the level might have other content that moves. And as you already know, position transformation is interpolated by PewPew Live. This means that, even though the level runs at 30 ticks per second, the game will interpolate the graphics and display them at 60 FPS or 90 FPS for example. (The game interpolates the graphics as per the refresh rate of the device, which will usually be higher than 30Hz.) To ensure that the difference between the rest of the level and our mesh animation is minimal, we have to make our mesh animation run on at least 60 FPS.
 
@@ -280,6 +286,10 @@ pewpew.customizable_entity_set_flipping_meshes(id, "/dynamic/graphics.lua", mesh
 
 What does this exactly do? When we set flipping meshes of an entity, that entity goes over the two specified meshes in a single game tick. This means that, in the first game tick, it will have the mesh at `index 0` for half a tick and will have the mesh at `index 1` for the rest half of a tick. In the next tick, we are resetting the flipping meshes. The variable `mesh_index` now has a value of `2`. The entity now has the mesh at `index 2` for half a tick and has the mesh at `index 3` for half a tick. Notice that we have gone over 4 meshes in just 2 game ticks (2 meshes per game tick)! The way in which we have used this creates an animation that runs at 60 FPS. Now, if you **save the files and run your level**, you'll notice that it is a lot smoother than our initial animation. It is exactly twice as smooth. It might look something like this:
 
-https://github.com/pewpewlive/ppl-utils/assets/42890752/342de310-cc7b-4b4b-8c35-5cf34d078ad0
+<ReactPlayer
+  playing
+  loop
+  url="https://github.com/pewpewlive/ppl-utils/assets/42890752/342de310-cc7b-4b4b-8c35-5cf34d078ad0"
+/>
 
 Congratulations! You have successfully made an animation that runs at 60 frames per second. I hope that you were able to understand this fairly well. Now, experiment with your code and make creative animations.
