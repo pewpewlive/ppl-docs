@@ -1,5 +1,7 @@
 # PPL Docs
 
+[![Deploy to GitHub Pages](https://github.com/pewpewlive/ppl-docs/actions/workflows/deploy.yml/badge.svg)](https://github.com/pewpewlive/ppl-docs/actions/workflows/deploy.yml)
+
 [![Test deployment](https://github.com/pewpewlive/docs/actions/workflows/test-deploy.yml/badge.svg)](https://github.com/pewpewlive/docs/actions/workflows/test-deploy.yml)
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.

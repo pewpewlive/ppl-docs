@@ -37,8 +37,7 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/pewpewlive/ppl-docs/edit/master/",
+          editUrl: "https://github.com/pewpewlive/ppl-docs/edit/master/",
         },
         blog: {
           showReadingTime: true,
@@ -66,7 +65,7 @@ const config: Config = {
           position: "left",
           label: "Tutorial",
         },
-        //{ to: "/blog", label: "Blog", position: "left" },
+        { to: "/blog", label: "Blog", position: "left" },
         {
           href: "https://github.com/pewpewlive/ppl-utils",
           label: "GitHub",
@@ -90,6 +89,10 @@ const config: Config = {
           title: "Community",
           items: [
             {
+              label: "Website",
+              href: "https://pewpew.live/",
+            },
+            {
               label: "Discord",
               href: "https://pewpew.live/discord",
             },
@@ -98,10 +101,10 @@ const config: Config = {
         {
           title: "More",
           items: [
-            // {
-            //   label: "Blog",
-            //   to: "/blog",
-            // },
+            {
+              label: "Blog",
+              to: "/blog",
+            },
             {
               label: "GitHub",
               href: "https://github.com/pewpewlive",
