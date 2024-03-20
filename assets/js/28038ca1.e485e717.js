@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkppl_docs=self.webpackChunkppl_docs||[]).push([[6555],{8667:l=>{l.exports=JSON.parse('{"label":"hello","permalink":"/ppl-docs/blog/tags/hello","allTagsPath":"/ppl-docs/blog/tags","count":2,"unlisted":false}')}}]);
