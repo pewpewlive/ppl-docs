@@ -6,7 +6,7 @@ sidebar_position: 1
 
 This community-maintained wiki holds the resources useful for creating custom levels for PewPew Live.
 
-Levels are created by writing Lua code. If you are new to programming or new to Lua, a good first step is to start with the [[Beginner]] guide.
+Levels are created by writing Lua code. If you are new to programming or new to Lua, a good first step is to start with the [Beginner](lua-guides/beginner) guide.
 
 If you are already familiar with programming, a good approach is to first look at the examples (for example, the [simple_level]) to get a feeling of how a level is made, and then come back to the wiki to get more precise information about the various aspect of level creation.
 
