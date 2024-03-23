@@ -40,5 +40,5 @@ indentation to be consistent with the rest of PewPew's codebase.
 [LuaRocks's style guide]: https://github.com/luarocks/lua-style-guide
 [https://pewpew.live]: https://pewpew.live
 [PewPewLive-MeshExporter]: https://github.com/ModEngineer/PewPewLive-MeshExporter
-[PewPew Snippets]: https://meshstudio.pewpew.live/pps/
+[PewPew Snippets]: https://hybroid.pewpew.live/pps/
 [PPLAF]: https://github.com/glebi574/PPLAF/
