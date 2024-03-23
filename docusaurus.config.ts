@@ -120,6 +120,9 @@ const config: Config = {
       additionalLanguages: ["json", "lua"],
     },
   } satisfies Preset.ThemeConfig,
+  themes: [
+    require.resolve("@easyops-cn/docusaurus-search-local"),
+  ],
 }
 
 export default config
