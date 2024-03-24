@@ -7,7 +7,7 @@ const config: Config = {
   tagline: "Documentation for PewPew Live",
   favicon: "img/favicon.ico",
   url: "https://pewpewlive.github.io/",
-  baseUrl: "/",
+  baseUrl: "/ppl-docs/",
   organizationName: "pewpewlive",
   projectName: "docs",
   onBrokenLinks: "throw",
