@@ -18,7 +18,7 @@ A level is a directory that contains a [manifest](File%20Information/manifest-fi
 
 - Files that describe [graphics](File%20Information/mesh-files).
 - Files that describe [sounds](File%20Information/sound-files).
-- Files that describe the behavior of the level. They make use of the [pewpew](API/PewPew) and [fmath](API/Fmath) libraries, which require an understanding of the [types](API/types) used.
+- Files that describe the behavior of the level. They make use of the [pewpew](APIs/PewPew) and [fmath](APIs/Fmath) libraries, which require an understanding of the [types](APIs/types) used.
 
 ## Uploading your level
 
