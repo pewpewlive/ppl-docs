@@ -1,42 +1,27 @@
-import { themes as prismThemes } from "prism-react-renderer"
-import type { Config } from "@docusaurus/types"
-import type * as Preset from "@docusaurus/preset-classic"
+import { themes as prismThemes } from "prism-react-renderer";
+import type { Config } from "@docusaurus/types";
+import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "PPL Docs",
   tagline: "Documentation for PewPew Live",
   favicon: "img/favicon.ico",
-
-  // Set the production url of your site here
   url: "https://pewpewlive.github.io/",
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/ppl-docs/",
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "pewpewlive", // Usually your GitHub org/user name.
-  projectName: "docs", // Usually your repo name.
-
+  organizationName: "pewpewlive",
+  projectName: "docs",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
   },
-
   presets: [
     [
       "classic",
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/pewpewlive/ppl-docs/edit/master/",
         },
         blog: {
@@ -48,10 +33,7 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-
   themeConfig: {
-    // Replace with your project's social card
-    // image: "img/docusaurus-social-card.jpg",
     navbar: {
       title: "PPL Docs",
       logo: {
@@ -114,15 +96,18 @@ const config: Config = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} pewpewlive. Licensed under MIT. Built with Docusaurus.`,
     },
+    docs: {
+      sidebar: {
+        autoCollapseCategories: false,
+      },
+    },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: prismThemes.oneDark,
+      darkTheme: prismThemes.oneDark,
       additionalLanguages: ["json", "lua"],
     },
   } satisfies Preset.ThemeConfig,
-  themes: [
-    require.resolve("@easyops-cn/docusaurus-search-local"),
-  ],
-}
+  themes: [require.resolve("@easyops-cn/docusaurus-search-local")],
+};
 
-export default config
+export default config;

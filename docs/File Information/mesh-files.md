@@ -47,6 +47,6 @@ The _optional_ `colors` field contains the colors of each vertexes. If the `colo
 
 Note that all meshes are rendered with additive blending.
 
-# Procedural rendering
+## Procedural rendering
 
 Astute readers may have realized that because `meshes` is described in a Lua script, it can be generated at runtime. See for instance this [example](https://github.com/jyaif/ppl-utils/blob/d32dbec8a171c9bcc0f800dcd864f175c42c34fd/content/levels/advanced_graphics/polar_graphic.lua#L36).

@@ -6,30 +6,30 @@ sidebar_position: 1
 
 This community-maintained wiki holds the resources useful for creating custom levels for PewPew Live.
 
-Levels are created by writing Lua code. If you are new to programming or new to Lua, a good first step is to start with the [Beginner](lua-guides/beginner) guide.
+Levels are created by writing Lua code. If you are new to programming or new to Lua, a good first step is to start with the [Beginner](Guides/Lua/beginner) guide.
 
 If you are already familiar with programming, a good approach is to first look at the examples (for example, the [simple_level]) to get a feeling of how a level is made, and then come back to the wiki to get more precise information about the various aspect of level creation.
 
 If you have questions, the game's creator and many level creators are available on [Discord].
 
-# Level structure
+## Level structure
 
-A level is a directory that contains a [manifest](file-information/manifest-files) and Lua files. The Lua files fall in three categories:
+A level is a directory that contains a [manifest](File%20Information/manifest-files) and Lua files. The Lua files fall in three categories:
 
-- Files that describe [graphics](file-information/mesh-files).
-- Files that describe [sounds](file-information/sound-files).
-- Files that describe the behavior of the level. They make use of the [pewpew](api/pewpew-library) and [fmath](api/fmath-library) libraries, which require an understanding of the [types](api/types) used.
+- Files that describe [graphics](File%20Information/mesh-files).
+- Files that describe [sounds](File%20Information/sound-files).
+- Files that describe the behavior of the level. They make use of the [pewpew](API/PewPew) and [fmath](API/Fmath) libraries, which require an understanding of the [types](API/types) used.
 
-# Uploading your level
+## Uploading your level
 
 You can upload your level by signing into your account on [https://pewpew.live] and navigating to the _Manage your custom levels_ page.
 
-# Recommended Lua Style guide
+## Recommended Lua Style guide
 
 When writing code, it is recommended to follow [LuaRocks's style guide], but using 2 space
 indentation to be consistent with the rest of PewPew's codebase.
 
-# Helpful tools and utilities
+## Helpful tools and utilities
 
 - [PewPew Snippets] is an essential Visual Studio Code extension that offers autocompletion and useful code snippets for creating levels.
 - [PewPewLive-MeshExporter] is a Blender plugin for converting scenes into PewPew Live 3D meshes.
