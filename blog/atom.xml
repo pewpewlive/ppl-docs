@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://pewpewlive.github.io/ppl-docs/blog</id>
+    <id>https://pewpewlive.github.io/blog</id>
     <title>PPL Docs Blog</title>
     <updated>2024-03-20T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://pewpewlive.github.io/ppl-docs/blog"/>
+    <link rel="alternate" href="https://pewpewlive.github.io/blog"/>
     <subtitle>PPL Docs Blog</subtitle>
-    <icon>https://pewpewlive.github.io/ppl-docs/img/favicon.ico</icon>
+    <icon>https://pewpewlive.github.io/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[First Blog Post]]></title>
-        <id>https://pewpewlive.github.io/ppl-docs/blog/first-blog-post</id>
-        <link href="https://pewpewlive.github.io/ppl-docs/blog/first-blog-post"/>
+        <id>https://pewpewlive.github.io/blog/first-blog-post</id>
+        <link href="https://pewpewlive.github.io/blog/first-blog-post"/>
         <updated>2024-03-20T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Welcome to the first blog article! We are so excited to move the entirety of PPL level development documentation here. This platform allows us to make more interactive (via React components), good looking documentation and having powerful search!]]></summary>
         <content type="html"><![CDATA[<p>Welcome to the first blog article! We are so excited to move the entirety of PPL level development documentation here. This platform allows us to make more interactive (via React components), good looking documentation and having powerful search!</p>
