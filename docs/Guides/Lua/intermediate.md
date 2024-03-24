@@ -8,9 +8,7 @@ If you are here, you made it through the learning process of the Lua language! K
 
 Here, we will learn **how to make a PewPew Live Custom Level**
 
-### GETTING STARTED
-
----
+## Getting started
 
 So in order to begin making a level, you will need to visit a couple of links.
 
@@ -20,9 +18,7 @@ https://pewpewlive.github.io/ppl-utils/ &lt;--- This link right here is the PewP
 
 **Also, make sure you have a text editor to make your code in! If you need help with this, go to the discord and ask about it in #technical-discuss!**
 
-### PEWPEW LIVE API - FUNCTIONS
-
----
+## PewPew Live API - functions
 
 Before we begin in our first steps to making a level, it is crucial to understand the PewPew Live API.
 
@@ -34,9 +30,7 @@ These are some of the functions that you will be using in PewPew Live! I suggest
 
 So you see, `print(String str)` would be typed in your code as `pewpew.print(String str)`. The black boxes with green text (things like `String`, `Int`, etc) tell you what kind of data the function uses, and what type of function it is! Don't worry too much about the type of function, focus mainly on the data that the functions take in, like `Int` and `String`.
 
-### PEWPEW LIVE API - FMATH
-
----
+## PewPew Live API - fmath
 
 **Another main part of the API is the Fmath library!**
 
@@ -52,9 +46,7 @@ So `sqrt(FixedPoint x)` would be typed in your code as `fmath.sqrt(FixedPoint x)
 
 Another main difference I should note is their decimals! It's a little strange, and I won't go into too much detail, but `2.6fx` does not exist. The number `2.5` is written as `2.2048fx`. It's strange, I know! And there is a specific and good reason for this! But for now, don't worry too much about decimals. If you need to use a number that isn't a full number, stick with fractions! Like instead of writing `2.2048fx`, write `5fx/2fx`! See? Much better! **Just remember that these fixed point numbers are mostly used for location and size!** In later examples we will see exactly how they are used!
 
-### PEWPEW LIVE API - ENUMS
-
----
+## PewPew Live API - enums
 
 **The last main part that I need to cover is the Enums section of the API**
 
@@ -64,49 +56,43 @@ So what is an `Enum`? `Enum` stands for _Enumerator_, and is just a fancy way of
 
 **We will go into detail on how to use Enums in specific ways, but for now, that is the general briefing on how to read the PewPew Live API!**
 
-### WHERE DOES THE LEVEL GO?
-
----
+## Where does this level go?
 
 **So we are finally about to make our level. Where do we keep it? Well at the very top, you went to the main github page and downloaded the files, you need that!**
 
 You will need to extract the file, and then you will enter it. You will see two files, a folder and an `.exe` file. That `.exe` is very important to running your level, keep it in mind!
 
-![](https://i.imgur.com/CrvXuXT.png)
+![Windows explorer window in ppl-utils directory](https://i.imgur.com/CrvXuXT.png)
 
 **You will then see a bunch of files, and a folder. You do NOT need to worry about these files at all! Just the folder! The `levels` folder is where all custom levels are stored! So that is the folder you enter into next!**
 
-![](https://i.imgur.com/JVRk9P6.png)
+![Windows explorer window in ppl-utils/content directory](https://i.imgur.com/JVRk9P6.png)
 
 **As you can see below, there are some levels already here! The developer, JF, put these levels here as examples for level creators to look at while they work! This is where you will create your level.**
 
-![](https://i.imgur.com/mgmeZ0g.png)
+![Windows explorer window in ppl-utils/content/levels directory](https://i.imgur.com/mgmeZ0g.png)
 
 **So all you need to do is make a new folder. I'm going to call my folder TUTORIAL_LEVEL, although you can call your folder whatever you like.**
 
-![](https://i.imgur.com/OoUkG9m.png)
+![Windows explorer window in ppl-utils/content/levels directory and creating TUTORIAL_LEVEL directory](https://i.imgur.com/OoUkG9m.png)
 
 And there you go! You now have the location of your custom level, and all the levels are nice and organized! Time for the fun stuff!
 
-### OPEN YOUR LEVEL
-
----
+## Open your level
 
 **Here we can go into the environment that we need to code! Just to let you know, I use a text editor called Visual Studio Code. You may use something different, and again, if you need help with this text editor stuff, reach out in the discord!**
 
 You can either open up just your level file in your text editor, or you can open the folder that contains all the levels. This is helpful for looking at other levels while you code! So head back to this screen below:
 
-![](https://i.imgur.com/JVRk9P6.png)
+![Windows explorer window in ppl-utils/content directory](https://i.imgur.com/JVRk9P6.png)
 
 And open the levels folder with your text editor! If you need help with this, feel free to reach out for help! If you're ready, then proceed down below!
 
-![](https://i.imgur.com/BfYNE64.png)
+![Visual Studio Code window open in ppl-utils/content/levels directory](https://i.imgur.com/BfYNE64.png)
 
 As pointed out by the very helpful green arrow, my level is on the left. The folder was initially empty. You need create a new script that will be your main level script. It HAS to be called `level.lua`. This is how PewPew Live enters into your level and runs it. It might change in the future, but it is good practice to keep consistency. And with the script made, you have an empty canvas. What's next?
 
-### THE START OF A LEVEL
-
----
+## The start of a level
 
 **This next portion will go over how to make your map, and how to spawn the player. Yes! You have to put in the code that spawns the player yourself! But don't worry, it's not too terrible.**
 

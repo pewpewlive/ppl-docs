@@ -8,7 +8,7 @@ import ReactPlayer from "react-player"
 
 Tutorial created by [WinterNox](https://github.com/WinterNox).
 
-### YouTube tutorial
+## YouTube tutorial
 
 <iframe
   src="//www.youtube.com/embed/145kDy9nr3E"
@@ -17,11 +17,11 @@ Tutorial created by [WinterNox](https://github.com/WinterNox).
   width="100%"
   height="480px"></iframe>
 
-### Mesh animations
+## Mesh animations
 
 Mesh animations in PewPew Live are achieved by iterating through multiple meshes that are slightly different from each other. The meshes are usually stored in a single file and are made procedurally.
 
-### Limitations
+## Limitations
 
 If you have some experience with level creation, you should know that PewPew Live runs at 30 ticks per second and that the graphics are interpolated. However, the interpolation only applies to transformations (position, rotation and scale). But, what about mesh animations? Since you can only change something about the entity per tick, mesh animations would be limited to 30 frames per second. Thankfully, the PPL Lua API has just the right function that can be used to achieve 60 FPS mesh animations. This function is:
 
@@ -31,7 +31,7 @@ pewpew.customizable_entity_set_flipping_meshes(entity_id, file_path, index1, ind
 
 When used, the entity will switch between the two specified meshes in a single game tick. But, how does that help us achieve 60 FPS animations? Let's see.
 
-### Setting up
+## Setting up
 
 Before we can start making an animation and assigning it to an entity, we need to have a base level that we can work with.
 Start by creating a new folder in `./content/levels/`. In the newly created folder, make sure you have these files:
@@ -51,11 +51,11 @@ If you need a basic `manifest.json`, here is a template you can use.
 }
 ```
 
-### Getting started
+## Getting started
 
 Now that we have a level base, we can start making our mesh and entity. If at any point you face a problem, try following the steps again, or check the [final `.lua` files](https://github.com/pewpewlive/ppl-utils/tree/master/content/levels/sample_animation).
 
-#### Making the mesh
+### Making the mesh
 
 Open `graphics.lua` (or your mesh file) and start by writing the following:
 
@@ -116,7 +116,7 @@ table.insert(meshes, {
 })
 ```
 
-#### Creating the entity and assigning it the mesh
+### Creating the entity and assigning it the mesh
 
 Now, go to `level.lua`, and start by creating an entity at position `(0fx, 0fx)`. Next, set the entity's mesh to the one we just created.
 
@@ -134,7 +134,7 @@ You should see the following:
 
 If you don't, you might have made a mistake somewhere! Check the steps to make the mesh again and check for mistakes.
 
-### Animating the mesh
+## Animating the mesh
 
 Let's get into animating our mesh! For this tutorial, we will have the outer hexagon rotating clockwise and the inner hexagon counterclockwise.
 
@@ -228,7 +228,7 @@ The result should look something like this:
 
 As you can see, it is an animation. Though, this animation is running at only 30 frames per second. This is an issue. An animation running at 30 FPS will not look good with the rest of the level as the level might have other content that moves. And as you already know, position transformation is interpolated by PewPew Live. This means that, even though the level runs at 30 ticks per second, the game will interpolate the graphics and display them at 60 FPS or 90 FPS for example. (The game interpolates the graphics as per the refresh rate of the device, which will usually be higher than 30Hz.) To ensure that the difference between the rest of the level and our mesh animation is minimal, we have to make our mesh animation run on at least 60 FPS.
 
-### Making the animation 60 FPS
+## Making the animation 60 FPS
 
 Open your mesh file and replace the line
 

@@ -8,9 +8,7 @@ In this tutorial, we will learn how to make more advanced levels, including mesh
 
 So, let's get straight into it.
 
----
-
-### Note
+## Note
 
 Before we start, it is necessary to know at least some basic Lua and how to make a simple PewPew Live level. If you need a refresher, take a look at the Beginner and Intermediate tutorials.
 

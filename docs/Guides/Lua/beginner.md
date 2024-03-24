@@ -8,70 +8,63 @@ sidebar_position: 1
 
 These examples are more for review, rather than learning! If you see something here that you don't understand, continue to watch Lua tutorials on youtube!
 
-### PRINTING EXAMPLE
+## Printing example
 
 ```lua
 print("Hello world!")
 ```
 
-Output:
-`Hello World!`
+Output: `Hello World!`
 
 ```lua
-print(2+3)
+print(2 + 3)
 ```
 
-Output:
-`5`
+Output: `5`
 
 ```lua
-print("2+3")
+print("2 + 3")
 ```
 
-Output:
-`2+3`
+Output: `2 + 3`
 
 Anything in quotation marks `" "` or `' '` is a string. Printing a string will output exactly what you type! Anything not inside of quotation marks are registered as numbers, variables, or mathematics!
 
-### VARIABLES EXAMPLE
+## Variables example
 
 ```lua
 my_variable = 5
 print(my_variable)
 ```
 
-Output:
-`5`
+Output: `5`
 
 ```lua
 x = 2
 y = 10
-print(x+y)
+print(x + y)
 ```
 
-Output:
-`12`
+Output: `12`
 
 ```lua
 x = 2
 y = 10
-print("x+y")
+print("x + y")
 ```
 
-Output:
-`x+y`
+Output: `x + y`
 
 ```lua
 some_text = "this is cool"
 print(some_text)
 ```
 
-Output:
-`this is cool`
+Output: `this is cool`
 
 Variables can be assigned practically any value! You can store them as numbers, strings, and more!
 
-### IF STATEMENT EXAMPLE
+## If statement example
 
 ```lua
 x = 6
@@ -129,7 +122,7 @@ Output:
 
 Variables can also be assigned boolean values, which are true and false! With "and" statements, both or all arguments need to be true to equal true in total! With "or" statements, only one needs to be true to equal true in total! Both or all need to be false to be false in total!
 
-### FOR LOOP EXAMPLE
+## For loop example
 
 ```lua
 for i = 1, 5 do
@@ -211,7 +204,7 @@ The following output is repeated 25 times:
 
 For loops are useful for running the same code multiple times! The first line of the for loop has the syntax for i = Index, End Value, Increments. You set i as your starting value, separate with a comma, set your end value, and you can optionally set your increment as your third value. Don't forget the "do"!
 
-### NESTED FOR LOOP EXAMPLE
+## Nested for loop example
 
 ```lua
 for i = 1, 5 do
@@ -235,9 +228,9 @@ This is the inner loop!
 local swim_laps = 10
 local paddles = 5
 for i = 1, swim_laps do
-  print("Lap : "..i)
+  print("Lap: "..i)
   for j = 1, paddles do
-    print("Paddle : "..j)
+    print("Paddle: "..j)
   end
 end
 ```
@@ -245,9 +238,9 @@ end
 Output:
 
 ```
-Lap : 1
-Paddle : 1
-Paddle : 2
+Lap: 1
+Paddle: 1
+Paddle: 2
 ```
 
 ...etc.
@@ -260,12 +253,11 @@ for i = 1, 5 do
 end
 ```
 
-The following output is repeated 10 times:
-`This is fine!`
+The following output is repeated 10 times: `This is fine!`
 
 You are allowed to put for loops inside of other for loops! In if you put a for loop that repeats 3 times inside of a for loop that repeats 5 times, that inner loop runs 15 times total! With for loops, you can use any variable as your index! And with nested for loops, it is good practice to use different variables, like using i and j instead of using i twice.
 
-### WHILE LOOP EXAMPLE
+## While loop example
 
 ```lua
 local x = 3
@@ -307,12 +299,11 @@ while true do
 end
 ```
 
-The following output is repeated indefinitely:
-`Hello!`
+The following output is repeated indefinitely: `Hello!`
 
 A while loop is very similar to a for loop, except you can think of it as an if statement and for loop combined! The while loop runs while the conditions are true. So for a while true do loop, the loop runs forever! Be careful when making a while true do loop!
 
-### BREAK LOOPS EXAMPLE
+## Break loops example
 
 ```lua
 while true do
@@ -321,8 +312,7 @@ while true do
 end
 ```
 
-The above loop will only run once. Output:
-`loop!`
+The above loop will only run once. Output: `loop!`
 
 ```lua
 x = 0
@@ -361,7 +351,7 @@ Output:
 
 Using `break` is very useful! The purpose for `break` is to stop a loop from running! So using `break` in a for or while loop will ultimately terminate it!
 
-### FUNCTIONS EXAMPLE
+## Functions example
 
 ```lua
 local function myFunction()
@@ -419,7 +409,7 @@ Output:
 
 Functions are good for reducing the amount of code you have to write. If you have a piece of code you are going to use over and over with slightly different values, then make that piece of code a function! You can give functions **parameters** which is the num1 and num2 in myFunction(num1, num2). When you use the function later in your code, don't forget to fill in the parentheses! You can also use `return` to essentially turn a function into a value.
 
-### TABLES EXAMPLE
+## Tables example
 
 ```lua
 local myTable = {1,5,3}
@@ -500,7 +490,7 @@ This person has 250 dollars!
 
 Tables are very good for storing lots of information. You can even put things inside of tables after the table is made! Done with table.insert(TableName, data) or you add things with table[n] = data. And remember, the table doesn't have to be defined on the same line! The brackets {} can be on separate lines to make it easier to read!
 
-### FOR I, V IN PAIRS LOOP EXAMPLE
+## `for i, v in pairs()` loop example
 
 ```lua
 local numbers = {3, 4, 99, 202, -3}

@@ -41,7 +41,9 @@ The following fields can be used to describe a sound:
 
 :::tip
 
-Use [jfxr] for sound creation. A script then transforms the resulting jfxr link (for example [this link]) into a table consumable by PewPew Live. See this [example].
+Use [jfxr] for sound creation. A script then transforms the resulting jfxr link (for example [this link]) into a table consumable by PewPew Live.
+
+See this [example].
 
 :::
 
