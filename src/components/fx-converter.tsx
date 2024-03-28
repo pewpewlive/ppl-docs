@@ -2,6 +2,8 @@ import { useRef, useState } from "react"
 
 function floatToFixedpoint(input: string): string {
   let float = parseFloat(input)
+  if (isNaN(float)) return "Error!"
+
   let abs_float = Math.abs(float)
   let int = Math.floor(abs_float)
   if (int > 2 << 51) {
@@ -18,21 +20,19 @@ function floatToFixedpoint(input: string): string {
 }
 
 export default function FxConverter() {
-  const [num, setNum] = useState<string>("2.718")
-
   const outputRef = useRef(null)
 
   return (
     <div>
-      <input type="text" defaultValue="2.718" onInput={(event) => setNum(event.target.value)} />
       <input
-        type="button"
-        defaultValue="to FixedPoint →"
-        onClick={() => {
-          outputRef.current.value = floatToFixedpoint(num)
+        type="text"
+        defaultValue="2.718"
+        onInput={(event) => {
+          outputRef.current.innerText = floatToFixedpoint(event.target.value)
         }}
       />
-      <input type="text" readonly ref={outputRef} />
+      <br />
+      <code ref={outputRef}>2.2940fx</code>
     </div>
   )
 }

@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Beginner Lua Tutorial
 
-[https://repl.it/languages/lua](https://repl.it/languages/lua) can be used to try Lua in the browser.
+[https://onecompiler.com/lua](https://onecompiler.com/lua) can be used to try Lua in the browser.
 
 These examples are more for review, rather than learning! If you see something here that you don't understand, continue to watch Lua tutorials on youtube!
 
