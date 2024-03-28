@@ -1,6 +1,6 @@
-import { themes as prismThemes } from "prism-react-renderer";
-import type { Config } from "@docusaurus/types";
-import type * as Preset from "@docusaurus/preset-classic";
+import { themes as prismThemes } from "prism-react-renderer"
+import type { Config } from "@docusaurus/types"
+import type * as Preset from "@docusaurus/preset-classic"
 
 const config: Config = {
   title: "PPL Docs",
@@ -23,6 +23,7 @@ const config: Config = {
         docs: {
           sidebarPath: "./sidebars.ts",
           editUrl: "https://github.com/pewpewlive/ppl-docs/edit/master/",
+          sidebarCollapsed: false
         },
         blog: {
           showReadingTime: true,
@@ -99,6 +100,7 @@ const config: Config = {
     docs: {
       sidebar: {
         autoCollapseCategories: false,
+        hideable: true,
       },
     },
     prism: {
@@ -108,6 +110,6 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
   themes: [require.resolve("@easyops-cn/docusaurus-search-local")],
-};
+}
 
-export default config;
+export default config
