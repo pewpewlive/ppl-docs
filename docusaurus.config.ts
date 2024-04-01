@@ -49,53 +49,30 @@ const config: Config = {
           label: "Docs",
         },
         { to: "/blog", label: "Blog", position: "left" },
-        {
-          href: "https://github.com/pewpewlive/ppl-utils",
-          label: "GitHub",
-          position: "right",
-        },
       ],
     },
     footer: {
       style: "dark",
       links: [
         {
-          title: "Docs",
-          items: [
-            {
-              label: "PPL Level development",
-              to: "/docs/intro",
-            },
-          ],
-        },
-        {
-          title: "Community",
-          items: [
-            {
-              label: "Website",
-              href: "https://pewpew.live/",
-            },
-            {
-              label: "Discord",
-              href: "https://pewpew.live/discord",
-            },
-          ],
-        },
-        {
           title: "More",
           items: [
             {
-              label: "Blog",
-              to: "/blog",
+              label: "ppl-utils (development utilities)",
+              href: "https://github.com/pewpewlive/ppl-utils",
             },
             {
-              label: "GitHub",
-              href: "https://github.com/pewpewlive",
+              label: "ppl-i18n (translations)",
+              href: "https://github.com/pewpewlive/ppl-i18n",
+            },
+            {
+              label: "ppl-docs (documentation)",
+              href: "https://github.com/pewpewlive/ppl-docs",
             },
           ],
         },
+
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} pewpewlive. Licensed under MIT. Built with Docusaurus.`,
     },
     docs: {
       sidebar: {
