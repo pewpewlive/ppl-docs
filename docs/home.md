@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Introduction
+# Home
 
 This community-maintained wiki holds the resources useful for creating custom levels for PewPew Live.
 
@@ -23,6 +23,18 @@ A level is a directory that contains a [manifest](File%20Information/manifest-fi
 ## Uploading your level
 
 You can upload your level by signing into your account on [https://pewpew.live] and navigating to the _Manage your custom levels_ page.
+
+![screenshot of UI for uploading](/img/documentation/manage-custom-levels.png)
+
+## PewPew Live's Lua
+
+PewPew Live embeds a slightly customized version of Lua 5.3.
+
+Among the changes are:
+* Added a [fixed point type](APIs/types) to make the game logic deterministic everywhere.
+* Iteration over tables was made deterministic.
+* The interpreter search for files in a virtual "dynamic" directory.
+* The interpreter has aggressive [memory limits](Other/game-limits).
 
 ## Recommended Lua Style guide
 

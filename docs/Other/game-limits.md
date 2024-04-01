@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Level restrictions
+# Game limits
 
 ## Entity count
 

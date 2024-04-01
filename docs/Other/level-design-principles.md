@@ -7,9 +7,10 @@ sidebar_position: 1
 ## General guidelines
 
 - Gameplay is king.
-- Prefer procedurally generated graphics over manually created graphics.
-- Prefer angular designs instead of curved designs.
-- Prefer abstract designs over realistic designs.
+- To be consistent with the rest of the game:
+  - Prefer procedurally generated graphics over manually created graphics.
+  - Prefer angular designs instead of curved designs.
+  - Prefer abstract designs over realistic designs.
 
 ## Gameplay advice
 

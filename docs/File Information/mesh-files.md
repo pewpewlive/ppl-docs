@@ -5,6 +5,8 @@ sidebar_position: 2
 # Mesh files
 
 In PewPew Live, a mesh is a collection of lines in 3D.
+
+
 To create a mesh, you need to list the coordinates of the points making up the model, and how the points are linked.
 Lua scripts describing meshes needs to create a table called `meshes`. That table must contain one or more meshes.
 
@@ -50,3 +52,5 @@ Note that all meshes are rendered with additive blending.
 ## Procedural rendering
 
 Astute readers may have realized that because `meshes` is described in a Lua script, it can be generated at runtime. See for instance this [example](https://github.com/jyaif/ppl-utils/blob/d32dbec8a171c9bcc0f800dcd864f175c42c34fd/content/levels/advanced_graphics/polar_graphic.lua#L36).
+
+This is the prefered way of creating complex meshes, as it is both more efficient and more consistent with the rest of the game.
