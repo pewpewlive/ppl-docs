@@ -5,7 +5,7 @@ import type * as Preset from "@docusaurus/preset-classic"
 const config: Config = {
   title: "PPL Docs",
   tagline: "Documentation for PewPew Live",
-  favicon: "img/favicon.ico",
+  favicon: "img/favicon.png",
   url: "https://pewpewlive.github.io/",
   baseUrl: "/ppl-docs/",
   organizationName: "pewpewlive",
