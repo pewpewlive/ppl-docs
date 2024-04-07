@@ -10,7 +10,7 @@ At most 1300 entities can exist at any given moment. This includes the player's 
 
 ## Duration
 
-A game lasts at most 1 hour. If the level has not called [`stop_game`](https://github.com/jyaif/ppl-utils/wiki/API_pewpew_lib#void-stop_game) by then, it will be called automatically.
+A game lasts at most 1 hour. If the level has not called [`stop_game`](../APIs/PewPew#stop_game) by then, it will be called automatically.
 The reason for this limitation is that replays then become too large.
 
 ## Memory usage

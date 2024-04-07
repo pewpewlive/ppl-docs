@@ -5,7 +5,7 @@ sidebar_position: 3
 # Standard libraries
 
 Only a subset of the standard Lua libraries are available in PewPew Live:
-The [string](https://github.com/jyaif/ppl-utils/wiki/API_standard_lua_libs#string-library) library, the [table](https://github.com/jyaif/ppl-utils/wiki/API_standard_lua_libs#table-library) library, and (for meshes and sound effects only) the [math](https://github.com/jyaif/ppl-utils/wiki/API_standard_lua_libs#math-library) library.
+The [string](#string-library) library, the [table](#table-library) library, and (for meshes and sound effects only) the [math](#math-library) library.
 
 :::info
 
