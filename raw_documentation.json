@@ -1430,7 +1430,7 @@
 "return_types": [
 ],
 "func_name":"customizable_entity_skip_mesh_attributes_interpolation",
-"comment":"Skips the interpolation of the mesh's attributes (x, y, z, scale_x, scale_y, scale_z, rotation).",
+"comment":"Skips the interpolation of the mesh's attributes (x, y, z, scale_x, scale_y, scale_z, rotation) for one tick. Only applies to the attributes that were set before the call to `customizable_entity_skip_mesh_attributes_interpolation`",
 "parameters": [
 {
 "name":"entity_id",

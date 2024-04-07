@@ -1018,7 +1018,7 @@ Sets the rotation angle of the mesh of the customizable entity identified by `id
 ```tsx
 pewpew.customizable_entity_skip_mesh_attributes_interpolation(entity_id: EntityId)
 ```
-Skips the interpolation of the mesh's attributes (x, y, z, scale_x, scale_y, scale_z, rotation).
+Skips the interpolation of the mesh's attributes (x, y, z, scale_x, scale_y, scale_z, rotation) for one tick. Only applies to the attributes that were set before the call to `customizable_entity_skip_mesh_attributes_interpolation`
 
 
 ---
