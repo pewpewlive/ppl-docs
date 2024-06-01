@@ -45,7 +45,7 @@ indentation to be consistent with the rest of PewPew's codebase.
 
 - [PewPew Snippets] is an essential Visual Studio Code extension that offers autocompletion and useful code snippets for creating levels.
 - [PewPewLive-MeshExporter] is a Blender plugin for converting scenes into PewPew Live 3D meshes.
-- [PewPew Overhaul Lite] is a highly opinionated framework that iterates upon the original PewPew API to optimize the level develompent process.
+- [PewPew Overhaul Lite] is a highly opinionated framework that iterates upon the original PewPew API to optimize the level development process.
 
 [Discord]: https://pewpew.live/discord
 [simple_level]: https://github.com/jyaif/ppl-utils/blob/d32dbec8a171c9bcc0f800dcd864f175c42c34fd/content/levels/simple_level/
