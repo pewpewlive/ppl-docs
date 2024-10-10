@@ -22,13 +22,18 @@
 "BAF_RED",
 "WARY_MISSILE",
 "UFO_BULLET",
+"SPINY",
+"SUPER_MOTHERSHIP",
 "PLAYER_BULLET",
 "BOMB_EXPLOSION",
 "PLAYER_EXPLOSION",
 "BONUS",
 "FLOATING_MESSAGE",
 "POINTONIUM",
-"BONUS_IMPLOSION"]
+"KAMIKAZE",
+"BONUS_IMPLOSION",
+"MACE",
+"PLASMA_FIELD"]
 },
 {
 "name":"MothershipType",
@@ -48,7 +53,9 @@
 "TRIPLE",
 "FOUR_DIRECTIONS",
 "DOUBLE_SWIPE",
-"HEMISPHERE"]
+"HEMISPHERE",
+"SHOTGUN",
+"LASER"]
 },
 {
 "name":"CannonFrequency",
@@ -73,12 +80,19 @@
 "SMALL_FREEZE"]
 },
 {
+"name":"MaceType",
+"values": [
+"DAMAGE_PLAYERS",
+"DAMAGE_ENTITIES"]
+},
+{
 "name":"BonusType",
 "values": [
 "REINSTANTIATION",
 "SHIELD",
 "SPEED",
-"WEAPON"]
+"WEAPON",
+"MACE"]
 },
 {
 "name":"WeaponType",
@@ -86,7 +100,10 @@
 "BULLET",
 "FREEZE_EXPLOSION",
 "REPULSIVE_EXPLOSION",
-"ATOMIZE_EXPLOSION"]
+"ATOMIZE_EXPLOSION",
+"PLASMA_FIELD",
+"WALL_TRAIL_LASSO",
+"MACE"]
 },
 {
 "name":"AsteroidSize",
@@ -394,6 +411,48 @@
 {
 "return_types": [
 ],
+"func_name":"configure_player_ship_wall_trail",
+"comment":"Configures a wall trail that kills everything inside when the ship it is attached to creates a loop with it. `wall_length` is clamped to  [100, 4000]. In symbiosis, the length is 2000. If `wall_length` is not specified, the trail is removed.",
+"parameters": [
+{
+"name":"ship_id",
+"type":"EntityId"}
+,
+{
+"name":"configuration",
+"type":"Map",
+"map_entries": [
+{
+"name":"wall_length",
+"type":"Int32"}
+]
+}
+]
+},
+{
+"return_types": [
+],
+"func_name":"configure_player_ship",
+"comment":"Configures various properties of the player ship identified by`id`",
+"parameters": [
+{
+"name":"ship_id",
+"type":"EntityId"}
+,
+{
+"name":"configuration",
+"type":"Map",
+"map_entries": [
+{
+"name":"swap_inputs",
+"type":"Boolean"}
+]
+}
+]
+},
+{
+"return_types": [
+],
 "func_name":"add_damage_to_player_ship",
 "comment":"Reduces the amount of shield of the player that owns the ship by `damage` points. If the player receives damage while having 0 shields left, the player loses.",
 "parameters": [
@@ -597,6 +656,45 @@
 ,
 {
 "name":"particle_count",
+"type":"Int32"}
+]
+},
+{
+"return_types": [
+],
+"func_name":"add_particle",
+"comment":"Adds a particle at the given position, that moves at the given speed, with the given color and duration. The engine may not spawn all particles if are already a lot of particles alive already spawned (e.g. more than 1000)",
+"parameters": [
+{
+"name":"x",
+"type":"FixedPoint"}
+,
+{
+"name":"y",
+"type":"FixedPoint"}
+,
+{
+"name":"z",
+"type":"FixedPoint"}
+,
+{
+"name":"dx",
+"type":"FixedPoint"}
+,
+{
+"name":"dy",
+"type":"FixedPoint"}
+,
+{
+"name":"dz",
+"type":"FixedPoint"}
+,
+{
+"name":"color",
+"type":"Int32"}
+,
+{
+"name":"duration",
 "type":"Int32"}
 ]
 },
@@ -856,6 +954,10 @@
 "type":"FixedPoint"}
 ,
 {
+"name":"dz",
+"type":"FixedPoint"}
+,
+{
 "name":"ticks_before_fade",
 "type":"Int32"}
 ,
@@ -910,6 +1012,26 @@
 "return_types": [
 {
 "type":"EntityId"}],
+"func_name":"new_kamikaze",
+"comment":"Creates a new Kamikaze at the location `x`,`y` that starts moving in the direction specified by `angle`.",
+"parameters": [
+{
+"name":"x",
+"type":"FixedPoint"}
+,
+{
+"name":"y",
+"type":"FixedPoint"}
+,
+{
+"name":"angle",
+"type":"FixedPoint"}
+]
+},
+{
+"return_types": [
+{
+"type":"EntityId"}],
 "func_name":"new_mothership",
 "comment":"Creates a new Mothership at the location `x`,`y`, and returns its entityId.",
 "parameters": [
@@ -936,6 +1058,38 @@
 "return_types": [
 {
 "type":"EntityId"}],
+"func_name":"new_mothership_bullet",
+"comment":"Creates a new mothership bullet.",
+"parameters": [
+{
+"name":"x",
+"type":"FixedPoint"}
+,
+{
+"name":"y",
+"type":"FixedPoint"}
+,
+{
+"name":"angle",
+"type":"FixedPoint"}
+,
+{
+"name":"speed",
+"type":"FixedPoint"}
+,
+{
+"name":"color",
+"type":"Int32"}
+,
+{
+"name":"large",
+"type":"Boolean"}
+]
+},
+{
+"return_types": [
+{
+"type":"EntityId"}],
 "func_name":"new_pointonium",
 "comment":"Creates a new Pointonium at the location `x`,`y`. Value must be 64, 128, or 256.",
 "parameters": [
@@ -950,6 +1104,32 @@
 {
 "name":"value",
 "type":"Int32"}
+]
+},
+{
+"return_types": [
+{
+"type":"EntityId"}],
+"func_name":"new_plasma_field",
+"comment":"Creates a new plasma field between `ship_a` and `ship_b`, and returns its entityId. If `ship_a` or `ship_b` is destroyed, the plasma field is destroyed as well.",
+"parameters": [
+{
+"name":"ship_a_id",
+"type":"EntityId"}
+,
+{
+"name":"ship_b_id",
+"type":"EntityId"}
+,
+{
+"name":"config",
+"type":"Map",
+"map_entries": [
+{
+"name":"length",
+"type":"FixedPoint"}
+]
+}
 ]
 },
 {
@@ -1033,6 +1213,56 @@
 ,
 {
 "name":"speed",
+"type":"FixedPoint"}
+]
+},
+{
+"return_types": [
+{
+"type":"EntityId"}],
+"func_name":"new_spiny",
+"comment":"Creates a new Spiny at the location `x`,`y` that starts moving in the direction specified by `angle`. `attractivity` specifies how much the Spiny is attracted to the closest player: 1fx is normal attractivity.",
+"parameters": [
+{
+"name":"x",
+"type":"FixedPoint"}
+,
+{
+"name":"y",
+"type":"FixedPoint"}
+,
+{
+"name":"angle",
+"type":"FixedPoint"}
+,
+{
+"name":"attractivity",
+"type":"FixedPoint"}
+]
+},
+{
+"return_types": [
+{
+"type":"EntityId"}],
+"func_name":"new_super_mothership",
+"comment":"Creates a new Super Mothership at the location `x`,`y`, and returns its entityId.",
+"parameters": [
+{
+"name":"x",
+"type":"FixedPoint"}
+,
+{
+"name":"y",
+"type":"FixedPoint"}
+,
+{
+"name":"type",
+"type":"Int32",
+"enum": "MothershipType"
+}
+,
+{
+"name":"angle",
 "type":"FixedPoint"}
 ]
 },
@@ -1238,9 +1468,60 @@
 },
 {
 "return_types": [
+{
+"type":"EntityId"}],
+"func_name":"entity_add_mace",
+"comment":"Adds a mace to the entity identified with `entity_id`. If `rotation_speed` exists, the mace will have a natural rotation, otherwise it will move due to inertia.",
+"parameters": [
+{
+"name":"target_id",
+"type":"EntityId"}
+,
+{
+"name":"config",
+"type":"Map",
+"map_entries": [
+{
+"name":"distance",
+"type":"FixedPoint"}
+,
+{
+"name":"angle",
+"type":"FixedPoint"}
+,
+{
+"name":"rotation_speed",
+"type":"FixedPoint"}
+,
+{
+"name":"type",
+"type":"Int32",
+"enum": "MaceType"
+}
+]
+}
+]
+},
+{
+"return_types": [
 ],
 "func_name":"customizable_entity_set_position_interpolation",
-"comment":"Sets whether the position of the mesh wil be interpolated when rendering. In general, this should be set to true if the entity will be moving smoothly.",
+"comment":"Sets whether the position of the mesh wil be interpolated when rendering. In general, this should be set to true if the entity will be moving.",
+"parameters": [
+{
+"name":"entity_id",
+"type":"EntityId"}
+,
+{
+"name":"enable",
+"type":"Boolean"}
+]
+},
+{
+"return_types": [
+],
+"func_name":"customizable_entity_set_angle_interpolation",
+"comment":"Sets whether the angle of the mesh wil be interpolated when rendering. Angle interpolation is enabled by default.",
 "parameters": [
 {
 "name":"entity_id",
@@ -1605,6 +1886,33 @@
 {
 "name":"explosion_duration",
 "type":"Int32"}
+]
+},
+{
+"return_types": [
+],
+"func_name":"customizable_entity_set_tag",
+"comment":"Sets a tag on customizable entities. The tag can be read back with `customizable_entity_get_tag`.",
+"parameters": [
+{
+"name":"entity_id",
+"type":"EntityId"}
+,
+{
+"name":"tag",
+"type":"Int32"}
+]
+},
+{
+"return_types": [
+{
+"type":"Int32"}],
+"func_name":"customizable_entity_get_tag",
+"comment":"Returns the tag that was set, or 0 if no tag was set.",
+"parameters": [
+{
+"name":"entity_id",
+"type":"EntityId"}
 ]
 }]
 }

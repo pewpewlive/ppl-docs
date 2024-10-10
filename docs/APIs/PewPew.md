@@ -30,13 +30,18 @@ The `pewpew` library contains all the functions for configuring levels and manag
  * BAF_RED
  * WARY_MISSILE
  * UFO_BULLET
+ * SPINY
+ * SUPER_MOTHERSHIP
  * PLAYER_BULLET
  * BOMB_EXPLOSION
  * PLAYER_EXPLOSION
  * BONUS
  * FLOATING_MESSAGE
  * POINTONIUM
+ * KAMIKAZE
  * BONUS_IMPLOSION
+ * MACE
+ * PLASMA_FIELD
 ### MothershipType
  * THREE_CORNERS
  * FOUR_CORNERS
@@ -51,6 +56,8 @@ The `pewpew` library contains all the functions for configuring levels and manag
  * FOUR_DIRECTIONS
  * DOUBLE_SWIPE
  * HEMISPHERE
+ * SHOTGUN
+ * LASER
 ### CannonFrequency
  * FREQ_30
  * FREQ_15
@@ -67,16 +74,23 @@ The `pewpew` library contains all the functions for configuring levels and manag
  * ATOMIZE
  * SMALL_ATOMIZE
  * SMALL_FREEZE
+### MaceType
+ * DAMAGE_PLAYERS
+ * DAMAGE_ENTITIES
 ### BonusType
  * REINSTANTIATION
  * SHIELD
  * SPEED
  * WEAPON
+ * MACE
 ### WeaponType
  * BULLET
  * FREEZE_EXPLOSION
  * REPULSIVE_EXPLOSION
  * ATOMIZE_EXPLOSION
+ * PLASMA_FIELD
+ * WALL_TRAIL_LASSO
+ * MACE
 ### AsteroidSize
  * SMALL
  * MEDIUM
@@ -316,6 +330,36 @@ Configures the weapon of the ship identified with `ship_id` using `configuration
 > ```
 
 ---
+### `configure_player_ship_wall_trail()`
+```tsx
+pewpew.configure_player_ship_wall_trail(
+  ship_id: EntityId,
+  configuration: table {
+    wall_length: int
+  }
+)
+```
+Configures a wall trail that kills everything inside when the ship it is attached to creates a loop with it. `wall_length` is clamped to  [100, 4000]. In symbiosis, the length is 2000. If `wall_length` is not specified, the trail is removed.
+
+> Example:
+> ```lua
+> pewpew.configure_player_ship_wall_trail(ship, {wall_length = 2000})
+> ```
+
+---
+### `configure_player_ship()`
+```tsx
+pewpew.configure_player_ship(
+  ship_id: EntityId,
+  configuration: table {
+    swap_inputs: bool
+  }
+)
+```
+Configures various properties of the player ship identified by`id`
+
+
+---
 ### `add_damage_to_player_ship()`
 ```tsx
 pewpew.add_damage_to_player_ship(
@@ -483,6 +527,27 @@ Creates an explosion of particles at the location `x`,`y`. `color` specifies the
 > ```
 
 ---
+### `add_particle()`
+```tsx
+pewpew.add_particle(
+  x: FixedPoint,
+  y: FixedPoint,
+  z: FixedPoint,
+  dx: FixedPoint,
+  dy: FixedPoint,
+  dz: FixedPoint,
+  color: int,
+  duration: int
+)
+```
+Adds a particle at the given position, that moves at the given speed, with the given color and duration. The engine may not spawn all particles if are already a lot of particles alive already spawned (e.g. more than 1000)
+
+> Example:
+> ```lua
+> pewpew.add_particle(10fx, 10fx, 0fx, 4fx, 0fx, 0fx, 0xffffffff, 40)
+> ```
+
+---
 ### `new_asteroid()`
 ```tsx
 pewpew.new_asteroid(
@@ -615,6 +680,7 @@ pewpew.new_floating_message(
   str: string,
   config: table {
     scale: FixedPoint,
+    dz: FixedPoint,
     ticks_before_fade: int,
     is_optional: bool
   }
@@ -654,6 +720,18 @@ Creates a new Inertiac at the location `x`,`y`, and returns its entityId. The in
 
 
 ---
+### `new_kamikaze()`
+```tsx
+pewpew.new_kamikaze(
+  x: FixedPoint,
+  y: FixedPoint,
+  angle: FixedPoint
+): EntityId
+```
+Creates a new Kamikaze at the location `x`,`y` that starts moving in the direction specified by `angle`.
+
+
+---
 ### `new_mothership()`
 ```tsx
 pewpew.new_mothership(
@@ -671,6 +749,21 @@ Creates a new Mothership at the location `x`,`y`, and returns its entityId.
 > ```
 
 ---
+### `new_mothership_bullet()`
+```tsx
+pewpew.new_mothership_bullet(
+  x: FixedPoint,
+  y: FixedPoint,
+  angle: FixedPoint,
+  speed: FixedPoint,
+  color: int,
+  large: bool
+): EntityId
+```
+Creates a new mothership bullet.
+
+
+---
 ### `new_pointonium()`
 ```tsx
 pewpew.new_pointonium(
@@ -680,6 +773,20 @@ pewpew.new_pointonium(
 ): EntityId
 ```
 Creates a new Pointonium at the location `x`,`y`. Value must be 64, 128, or 256.
+
+
+---
+### `new_plasma_field()`
+```tsx
+pewpew.new_plasma_field(
+  ship_a_id: EntityId,
+  ship_b_id: EntityId,
+  config: table {
+    length: FixedPoint
+  }
+): EntityId
+```
+Creates a new plasma field between `ship_a` and `ship_b`, and returns its entityId. If `ship_a` or `ship_b` is destroyed, the plasma field is destroyed as well.
 
 
 ---
@@ -730,6 +837,36 @@ pewpew.new_rolling_sphere(
 ```
 Creates a new Rolling Sphere at the location `x`,`y`, and returns its entityId.
 
+
+---
+### `new_spiny()`
+```tsx
+pewpew.new_spiny(
+  x: FixedPoint,
+  y: FixedPoint,
+  angle: FixedPoint,
+  attractivity: FixedPoint
+): EntityId
+```
+Creates a new Spiny at the location `x`,`y` that starts moving in the direction specified by `angle`. `attractivity` specifies how much the Spiny is attracted to the closest player: 1fx is normal attractivity.
+
+
+---
+### `new_super_mothership()`
+```tsx
+pewpew.new_super_mothership(
+  x: FixedPoint,
+  y: FixedPoint,
+  type: int,
+  angle: FixedPoint
+): EntityId
+```
+Creates a new Super Mothership at the location `x`,`y`, and returns its entityId.
+
+> Example:
+> ```lua
+> pewpew.new_super_mothership(50fx, 50fx, pewpew.MothershipType.THREE_CORNERS, fmath.tau() / 4fx)
+> ```
 
 ---
 ### `new_wary()`
@@ -879,6 +1016,22 @@ Makes the entity identified by `id` react to the weapon described in `weapon_des
 
 
 ---
+### `entity_add_mace()`
+```tsx
+pewpew.entity_add_mace(
+  target_id: EntityId,
+  config: table {
+    distance: FixedPoint,
+    angle: FixedPoint,
+    rotation_speed: FixedPoint,
+    type: int
+  }
+): EntityId
+```
+Adds a mace to the entity identified with `entity_id`. If `rotation_speed` exists, the mace will have a natural rotation, otherwise it will move due to inertia.
+
+
+---
 ### `customizable_entity_set_position_interpolation()`
 ```tsx
 pewpew.customizable_entity_set_position_interpolation(
@@ -886,7 +1039,18 @@ pewpew.customizable_entity_set_position_interpolation(
   enable: bool
 )
 ```
-Sets whether the position of the mesh wil be interpolated when rendering. In general, this should be set to true if the entity will be moving smoothly.
+Sets whether the position of the mesh wil be interpolated when rendering. In general, this should be set to true if the entity will be moving.
+
+
+---
+### `customizable_entity_set_angle_interpolation()`
+```tsx
+pewpew.customizable_entity_set_angle_interpolation(
+  entity_id: EntityId,
+  enable: bool
+)
+```
+Sets whether the angle of the mesh wil be interpolated when rendering. Angle interpolation is enabled by default.
 
 
 ---
@@ -1159,4 +1323,23 @@ pewpew.customizable_entity_start_exploding(
 )
 ```
 Makes the customizable entity identified by `id` explode for a duration of `explosion_duration` game ticks. After the explosion, the entity is destroyed. `explosion_duration` must be less than 255. Any scale applied to the entity is also applied to the explosion.
+
+
+---
+### `customizable_entity_set_tag()`
+```tsx
+pewpew.customizable_entity_set_tag(
+  entity_id: EntityId,
+  tag: int
+)
+```
+Sets a tag on customizable entities. The tag can be read back with `customizable_entity_get_tag`.
+
+
+---
+### `customizable_entity_get_tag()`
+```tsx
+pewpew.customizable_entity_get_tag(entity_id: EntityId): int
+```
+Returns the tag that was set, or 0 if no tag was set.
 
