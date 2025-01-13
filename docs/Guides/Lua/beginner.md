@@ -6,7 +6,7 @@ sidebar_position: 1
 
 [https://onecompiler.com/lua](https://onecompiler.com/lua) can be used to try Lua in the browser.
 
-These examples are more for review, rather than learning! If you see something here that you don't understand, continue to watch Lua tutorials on youtube!
+These examples are more for review, rather than learning! If you see something here that you don't understand, continue to watch Lua tutorials on YouTube!
 
 ## Printing example
 
@@ -28,7 +28,7 @@ print("2 + 3")
 
 Output: `2 + 3`
 
-Anything in quotation marks `" "` or `' '` is a string. Printing a string will output exactly what you type! Anything not inside of quotation marks are registered as numbers, variables, or mathematics!
+Anything in quotation marks `" "` or `' '` is a string. Printing a string will output exactly what you type! Anything not inside of quotation marks are registered as numbers, variables, or math statements!
 
 ## Variables example
 
@@ -172,7 +172,7 @@ Output:
 
 ```lua
 for i = 0, -10, -1 do
-   print(i)
+  print(i)
 end
 ```
 
@@ -202,7 +202,7 @@ end
 The following output is repeated 25 times:
 `Loop!`
 
-For loops are useful for running the same code multiple times! The first line of the for loop has the syntax for i = Index, End Value, Increments. You set i as your starting value, separate with a comma, set your end value, and you can optionally set your increment as your third value. Don't forget the "do"!
+For loops are useful for running the same code multiple times! The first line of the for loop has the syntax for `i = Index, End Value, Increments`. You set i as your starting value, separate with a comma, set your end value, and you can optionally set your increment as your third value. Don't forget the "do"!
 
 ## Nested for loop example
 
@@ -228,9 +228,9 @@ This is the inner loop!
 local swim_laps = 10
 local paddles = 5
 for i = 1, swim_laps do
-  print("Lap: "..i)
+  print("Lap: " .. i)
   for j = 1, paddles do
-    print("Paddle: "..j)
+    print("Paddle: " .. j)
   end
 end
 ```
@@ -319,7 +319,7 @@ x = 0
 while true do
   print("loop!")
   x = x + 1
-  if x >=2 then
+  if x >= 2 then
     break
   end
 end
@@ -387,7 +387,7 @@ Output:
 
 ```lua
 local function Cubed(number)
-  newNumber = number*number*number
+  newNumber = number * number * number
   return newNumber
 end
 
@@ -412,7 +412,7 @@ Functions are good for reducing the amount of code you have to write. If you hav
 ## Tables example
 
 ```lua
-local myTable = {1,5,3}
+local myTable = { 1, 5, 3 }
 
 print(myTable[1])
 print(myTable[2])
@@ -460,18 +460,18 @@ local person = {
   isAwesome = true,
   name = "John"
 }
-print("This person's health is "..person.health)
-print("This person's health is "..person["health"])
-print("This person's speed is "..person.speed)
-print("This person is awesome. "..person.isAwesome)
-print("This person's name is "..person.name)
-print("This person's name is "..person["name"])
+print("This person's health is " .. person.health)
+print("This person's health is " .. person["health"])
+print("This person's speed is " .. person.speed)
+print("This person is awesome. " .. person.isAwesome)
+print("This person's name is " .. person.name)
+print("This person's name is " .. person["name"])
 
 person.home = "USA"
 person["money"] = 250
 
-print("This person's home is "..person.home)
-print("This person has "..person["money"].." dollars!")
+print("This person's home is " .. person.home)
+print("This person has " .. person["money"] .. " dollars!")
 
 ```
 
@@ -493,7 +493,7 @@ Tables are very good for storing lots of information. You can even put things in
 ## `for i, v in pairs()` loop example
 
 ```lua
-local numbers = {3, 4, 99, 202, -3}
+local numbers = { 3, 4, 99, 202, -3 }
 
 for i, v in pairs(numbers) do
   print(i, v)
@@ -511,10 +511,10 @@ Output:
 ```
 
 ```lua
-local names = {"Jack", "Mike", "Melinda", "Stacy"}
+local names = { "Jack", "Mike", "Melinda", "Stacy" }
 
 for index, person in pairs(names) do
-  print("Person "..index.." is "..person)
+  print("Person " .. index .. " is " .. person)
 end
 ```
 

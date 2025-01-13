@@ -31,7 +31,7 @@ meshes = {
 
 The `vertexes` field contains the list of vertexes. Vertexes are represented by three numbers. Those numbers can be floating point numbers.
 
-## Segments chains
+## Segment chains
 
 The `segment` field describes which vertexes should be joined by a segment. It contain a list of segment chains. Each segment chain is a table that holds a lists of 0-based indexes to vertexes that should be connected by a segment.
 

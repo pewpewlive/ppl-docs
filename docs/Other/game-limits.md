@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Entity count
 
-At most 1300 entities can exist at any given moment. This includes the player's bullet. If there are already 1300 entities, no more entities will be created. This means that the player won't be able to shoot.
+At most 1300 entities can exist at any given moment. This includes the player's bullets. If there are already 1300 entities, no more entities will be created. This means that the player won't be able to shoot.
 
 ## Duration
 

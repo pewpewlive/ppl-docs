@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Home
 
-This community-maintained websites references the resources useful for creating custom levels for PewPew Live.
+This community-maintained website references the resources useful for creating custom levels for PewPew Live.
 
 Levels are created by writing Lua code. If you are new to programming or new to Lua, a good first step is to start with the [Beginner](Guides/Lua/beginner) guide.
 
