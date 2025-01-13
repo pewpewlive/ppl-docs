@@ -15,6 +15,6 @@ The reason for this limitation is that replays then become too large.
 
 ## Memory usage
 
-- The Lua interpreter can't use more than 500KB of memory when running a level. Unless you have a memory leak in your level, this shouldn't be a problem.
-- The Lua interpreter can't use more than 3MB of memory when loading a mesh. You will need to split a mesh into multiple files if you are hitting this limit.
-- The Lua interpreter can't use more than 3MB of memory when loading sounds. Unless you are doing something really crazy, this will never be a problem.
+- The Lua interpreter can't use more than 500 KB of memory when running a level. Unless you have a memory leak in your level, this shouldn't be a problem.
+- The Lua interpreter can't use more than 3 MB of memory when loading a mesh. You will need to split a mesh into multiple files if you are hitting this limit.
+- The Lua interpreter can't use more than 3 MB of memory when loading sounds. Unless you are doing something really crazy, this will never be a problem.
