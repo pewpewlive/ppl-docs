@@ -129,7 +129,7 @@ pewpew.set_level_size(
   height: FixedPoint
 )
 ```
-Sets the level's size. Implicetely adds walls to make sure that entities can not go outside of the level's boundaries. `width` and `height` are clamped to the range ]0fx, 6000fx]. If this function is not called, the level size is (10fx, 10fx), which is uselessly small for most cases.
+Sets the level's size. Implicitly adds walls to make sure that entities can not go outside of the level's boundaries. `width` and `height` are clamped to the range ]0fx, 6000fx]. If this function is not called, the level size is (10fx, 10fx), which is uselessly small for most cases.
 
 > Example:
 > ```lua
@@ -339,7 +339,7 @@ pewpew.configure_player_ship_wall_trail(
   }
 )
 ```
-Configures a wall trail that kills everything inside when the ship it is attached to creates a loop with it. `wall_length` is clamped to  [100, 4000]. In symbiosis, the length is 2000. If `wall_length` is not specified, the trail is removed.
+Configures a wall trail that kills everything inside when the ship it is attached to creates a loop with it. `wall_length` is clamped to  [100, 4000]. In Partitioner, the length is 2000. If `wall_length` is not specified, the trail is removed.
 
 > Example:
 > ```lua
@@ -522,8 +522,8 @@ Creates an explosion of particles at the location `x`,`y`. `color` specifies the
 
 > Example:
 > ```lua
-> pewpew.create_explosion(200fx, 100fx, 0xffffffff, 1fx, 20) -- medium explosion
-> pewpew.create_explosion(300fx, 100fx, 0xffffffff, 3fx, 50) -- large red explosion
+> pewpew.create_explosion(200fx, 100fx, 0x00ff00ff, 1fx, 20) -- medium green explosion
+> pewpew.create_explosion(300fx, 100fx, 0xff0000ff, 3fx, 50) -- large red explosion
 > ```
 
 ---
@@ -782,11 +782,12 @@ pewpew.new_plasma_field(
   ship_a_id: EntityId,
   ship_b_id: EntityId,
   config: table {
-    length: FixedPoint
+    length: FixedPoint,
+    stiffness: FixedPoint
   }
 ): EntityId
 ```
-Creates a new plasma field between `ship_a` and `ship_b`, and returns its entityId. If `ship_a` or `ship_b` is destroyed, the plasma field is destroyed as well.
+Creates a new plasma field between `ship_a` and `ship_b`, and returns its entityId. If `ship_a` or `ship_b` is destroyed, the plasma field is destroyed as well. `length` is optional, and specifies the length of the plasma field (defaut is 150). `stiffness` is optional, and specifies the stiffness of the plasma field (default is 1)
 
 
 ---
@@ -962,6 +963,18 @@ Sets the position of the entity identified by `id` to `x`,`y`
 
 
 ---
+### `entity_move()`
+```tsx
+pewpew.entity_move(
+  entity_id: EntityId,
+  dx: FixedPoint,
+  dy: FixedPoint
+)
+```
+Attempts to move the entity identified by `id` by `dx`,`dy`. Movement will be blocked by walls.
+
+
+---
 ### `entity_set_radius()`
 ```tsx
 pewpew.entity_set_radius(
@@ -1120,7 +1133,7 @@ pewpew.customizable_entity_set_mesh_xyz(
   z: FixedPoint
 )
 ```
-Sets the position of the mesh to x,y,z, relative to the center ofthe customizable entity identified by `id`
+Sets the position of the mesh to x,y,z, relative to the center of the customizable entity identified by `id`
 
 
 ---

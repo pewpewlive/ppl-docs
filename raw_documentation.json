@@ -137,7 +137,7 @@
 "return_types": [
 ],
 "func_name":"set_level_size",
-"comment":"Sets the level's size. Implicetely adds walls to make sure that entities can not go outside of the level's boundaries. `width` and `height` are clamped to the range ]0fx, 6000fx]. If this function is not called, the level size is (10fx, 10fx), which is uselessly small for most cases.",
+"comment":"Sets the level's size. Implicitly adds walls to make sure that entities can not go outside of the level's boundaries. `width` and `height` are clamped to the range ]0fx, 6000fx]. If this function is not called, the level size is (10fx, 10fx), which is uselessly small for most cases.",
 "parameters": [
 {
 "name":"width",
@@ -412,7 +412,7 @@
 "return_types": [
 ],
 "func_name":"configure_player_ship_wall_trail",
-"comment":"Configures a wall trail that kills everything inside when the ship it is attached to creates a loop with it. `wall_length` is clamped to  [100, 4000]. In symbiosis, the length is 2000. If `wall_length` is not specified, the trail is removed.",
+"comment":"Configures a wall trail that kills everything inside when the ship it is attached to creates a loop with it. `wall_length` is clamped to  [100, 4000]. In Partitioner, the length is 2000. If `wall_length` is not specified, the trail is removed.",
 "parameters": [
 {
 "name":"ship_id",
@@ -1111,7 +1111,7 @@
 {
 "type":"EntityId"}],
 "func_name":"new_plasma_field",
-"comment":"Creates a new plasma field between `ship_a` and `ship_b`, and returns its entityId. If `ship_a` or `ship_b` is destroyed, the plasma field is destroyed as well.",
+"comment":"Creates a new plasma field between `ship_a` and `ship_b`, and returns its entityId. If `ship_a` or `ship_b` is destroyed, the plasma field is destroyed as well. `length` is optional, and specifies the length of the plasma field (defaut is 150). `stiffness` is optional, and specifies the stiffness of the plasma field (default is 1)",
 "parameters": [
 {
 "name":"ship_a_id",
@@ -1127,6 +1127,10 @@
 "map_entries": [
 {
 "name":"length",
+"type":"FixedPoint"}
+,
+{
+"name":"stiffness",
 "type":"FixedPoint"}
 ]
 }
@@ -1392,6 +1396,25 @@
 {
 "return_types": [
 ],
+"func_name":"entity_move",
+"comment":"Attempts to move the entity identified by `id` by `dx`,`dy`. Movement will be blocked by walls.",
+"parameters": [
+{
+"name":"entity_id",
+"type":"EntityId"}
+,
+{
+"name":"dx",
+"type":"FixedPoint"}
+,
+{
+"name":"dy",
+"type":"FixedPoint"}
+]
+},
+{
+"return_types": [
+],
 "func_name":"entity_set_radius",
 "comment":"Sets the radius of the entity identified by `id`. To give you a sense of scale, motherships have a radius of 28fx.",
 "parameters": [
@@ -1608,7 +1631,7 @@
 "return_types": [
 ],
 "func_name":"customizable_entity_set_mesh_xyz",
-"comment":"Sets the position of the mesh to x,y,z, relative to the center ofthe customizable entity identified by `id`",
+"comment":"Sets the position of the mesh to x,y,z, relative to the center of the customizable entity identified by `id`",
 "parameters": [
 {
 "name":"entity_id",
