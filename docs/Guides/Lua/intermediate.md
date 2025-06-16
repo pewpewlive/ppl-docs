@@ -16,7 +16,7 @@ https://github.com/jyaif/ppl-utils &lt;--- This link right here will take you to
 
 [/docs/APIs/PewPew/](/docs/APIs/PewPew) &lt;--- This link right here is the PewPew Live API. That means, many important functions and items that are needed to make your level are found on this site!
 
-**Also, make sure you have a text editor to make your code in! If you need help with this, go to the Discord server and ask about it in #pewpew-technical-discussion!**
+**Also, make sure you have a text editor to make your code in! If you need help with this, go to the [Discord](https://pewpew.live/discord) server and ask about it in #pewpew-technical-discussion!**
 
 ## PewPew Live API - functions
 
