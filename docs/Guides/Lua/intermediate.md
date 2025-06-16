@@ -14,9 +14,9 @@ So in order to begin making a level, you will need to visit a couple of links.
 
 https://github.com/jyaif/ppl-utils &lt;--- This link right here will take you to the files you need to make your level! Scroll down to **Getting Started** and follow the directions!
 
-https://pewpewlive.github.io/ppl-utils/ &lt;--- This link right here is the PewPew Live API. That means, many important functions and items that are needed to make your level are found on this site!
+[/docs/APIs/PewPew/](/docs/APIs/PewPew) &lt;--- This link right here is the PewPew Live API. That means, many important functions and items that are needed to make your level are found on this site!
 
-**Also, make sure you have a text editor to make your code in! If you need help with this, go to the discord and ask about it in #technical-discuss!**
+**Also, make sure you have a text editor to make your code in! If you need help with this, go to the Discord server and ask about it in #pewpew-technical-discussion!**
 
 ## PewPew Live API - functions
 
