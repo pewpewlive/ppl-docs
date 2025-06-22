@@ -9,7 +9,7 @@ const config: Config = {
   url: "https://pewpewlive.github.io/",
   baseUrl: "/ppl-docs/",
   organizationName: "pewpewlive",
-  projectName: "docs",
+  projectName: "ppl-docs",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   i18n: {
@@ -23,11 +23,10 @@ const config: Config = {
         docs: {
           sidebarPath: "./sidebars.ts",
           editUrl: "https://github.com/pewpewlive/ppl-docs/edit/master/",
-          sidebarCollapsed: false
+          sidebarCollapsed: false,
+          routeBasePath: "/",
         },
-        blog: {
-          showReadingTime: true,
-        },
+        blog: false,
         theme: {
           customCss: "./src/css/custom.css",
         },
@@ -41,15 +40,6 @@ const config: Config = {
         alt: "PewPew Logo - Alpha ship",
         src: "img/icon.png",
       },
-      items: [
-        {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
-          position: "left",
-          label: "Docs",
-        },
-        { to: "/blog", label: "Blog", position: "left" },
-      ],
     },
     footer: {
       style: "dark",
@@ -71,7 +61,6 @@ const config: Config = {
             },
           ],
         },
-
       ],
     },
     docs: {

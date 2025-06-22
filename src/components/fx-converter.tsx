@@ -27,7 +27,7 @@ export default function FxConverter() {
       <input
         type="text"
         defaultValue="2.718"
-        onInput={(event) => {
+        onChange={(event) => {
           outputRef.current.innerText = floatToFixedpoint(event.target.value)
         }}
       />

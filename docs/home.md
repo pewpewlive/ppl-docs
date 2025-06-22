@@ -1,4 +1,5 @@
 ---
+slug: /
 sidebar_position: 1
 ---
 
@@ -31,10 +32,11 @@ You can upload your level by signing into your account on [https://pewpew.live] 
 PewPew Live embeds a slightly customized version of Lua 5.3.
 
 Among the changes are:
-* Added a [fixed point type](APIs/types) to make the game logic deterministic everywhere.
-* Iteration over tables was made deterministic.
-* The interpreter search for files in a virtual "dynamic" directory.
-* The interpreter has aggressive [memory limits](Other/game-limits).
+
+- Added a [fixed point type](APIs/types) to make the game logic deterministic everywhere.
+- Iteration over tables was made deterministic.
+- The interpreter search for files in a virtual "dynamic" directory.
+- The interpreter has aggressive [memory limits](Other/game-limits).
 
 ## Recommended Lua Style guide
 
