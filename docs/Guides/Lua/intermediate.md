@@ -12,9 +12,9 @@ Here, we will learn **how to make a PewPew Live Custom Level**
 
 So in order to begin making a level, you will need to visit a couple of links.
 
-https://github.com/jyaif/ppl-utils &lt;--- This link right here will take you to the files you need to make your level! Scroll down to **Getting Started** and follow the directions!
+[https://github.com/pewpewlive/ppl-utils](https://github.com/pewpewlive/ppl-utils) &lt;--- This link right here will take you to the files you need to make your level! Scroll down to **Getting Started** and follow the directions!
 
-[/docs/APIs/PewPew/](/docs/APIs/PewPew) &lt;--- This link right here is the PewPew Live API. That means, many important functions and items that are needed to make your level are found on this site!
+[/APIs/PewPew/](/APIs/PewPew) &lt;--- This link right here is the PewPew Live API. That means, many important functions and items that are needed to make your level are found on this site!
 
 **Also, make sure you have a text editor to make your code in! If you need help with this, go to the [Discord](https://pewpew.live/discord) server and ask about it in #pewpew-technical-discussion!**
 
@@ -157,7 +157,7 @@ You need to run the ppl-utils file. It will open a window, and your computer wil
 
 ![](https://i.imgur.com/0GVpONe.png)
 
-**Your levels are being run! Now you need to go to the website that the screen above is telling you!** The website to run your levels is http://localhost:9000/pewpew.html
+**Your levels are being run! Now you need to go to the website that the screen above is telling you!** The website to run your levels is [http://localhost:9000/pewpew.html](http://localhost:9000/pewpew.html)
 
 You should get a screen like this:
 
