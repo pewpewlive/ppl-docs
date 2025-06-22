@@ -1,0 +1,347 @@
+---
+sidebar_position: 1
+---
+
+import ReactPlayer from "react-player"
+
+# 60 FPS Animation
+
+:::info[Author]
+
+Tutorial created by [WinterNox](https://github.com/WinterNox).
+
+:::
+
+## Mesh animations
+
+Mesh animations in PewPew Live are achieved by iterating through multiple meshes that are slightly different from each other. The meshes are usually stored in a single file and are made procedurally.
+
+## Limitations
+
+If you have some experience with level creation, you should know that PewPew Live runs at 30 ticks per second and that the graphics are interpolated. However, the interpolation only applies to transformations (position, rotation and scale). But, what about mesh animations? Since you can only change something about the entity once per tick, mesh animations would be limited to 30 frames per second. Thankfully, the PPL Lua API has just the right function that can be used to achieve 60 FPS mesh animations. This function is:
+
+```lua
+pewpew.customizable_entity_set_flipping_meshes(entity_id, file_path, index1, index2)
+```
+
+When used, the entity will switch between the two specified meshes in a single game tick. But, how does that help us achieve 60 FPS animations? Let's see.
+
+## Setting up
+
+Before we can start making an animation and assigning it to an entity, we need to have a base level that we can work with.
+Start by creating a new folder in `./levels/` (this is next to the ppl-utils executable). In the newly created folder, make sure you have these files:
+
+- `level.lua`
+- `graphics.lua` (The name of your mesh file can be different, but remember it!)
+- `manifest.json`
+
+If you need a basic `manifest.json`, here is a template you can use.
+
+```json
+{
+  "name": "Sample: Animation",
+  "descriptions": ["A smooth hexagon!"],
+  "entry_point": "level.lua",
+  "has_score_leaderboard": false
+}
+```
+
+## Getting started
+
+Now that we have a level base, we can start making our mesh and entity. If at any point you face a problem, try following the steps again, or check the [final `.lua` files](https://github.com/pewpewlive/ppl-utils/tree/master/content/levels/sample_animation).
+
+### Making the mesh
+
+Open `graphics.lua` (or your mesh file) and start by writing the following:
+
+```lua
+meshes = {}
+```
+
+Since our meshes are going to be procedurally generated, we won't be making every vertex by hand, instead, we will make Lua do that for us! Essentially when making a procedural mesh, we make a table with our vertexes and segments, that we later add to the `meshes` table. The vertex and segment tables are going to hold the generated points and segment indexes.
+
+Add this to your mesh file:
+
+```lua
+-- Tables for our mesh vertexes, segments
+local computed_vertexes, computed_segments = {}, {}
+```
+
+Now we need a way to populate the tables with our mesh points and segments.
+
+:::note
+
+In this example, we will be making a hexagon!
+
+:::
+
+Start by:
+
+1. Defining the `inner_radius` and `outer_radius` variables (they will be used when generating the hexagon sides).
+2. Creating two tables `inner_segment` and `outer_segment` for the two hexagons.
+3. Defining a variable `vertex_index`, which will be used for the segments.
+
+Now, create a for-loop that will go from `i = 0` to `i = 5` (since we want it to be a hexagon). From this, we can calculate the desired `angle` for the vertex, by multiplying `math.tau` (complete 360 degrees angle) by `i / 6`. Get the corresponding sine and cosine of the angle (for the y and x positions respectively). Multiply one pair by the inner radius and one by the outer radius, and add them to the vertexes table. For the inner ring, we add the index of the first vertex in the iteration (which will simply be `vertex_index`) to `inner_segment`, and the index of the second one (which will be `vertex_index + 1`) to `outer_segment`. For a cool effect, we shall also connect these two vertexes to each other. To do this, we simply add the segment `{vertex_index, vertex_index + 1}` to the `computed_segments` table. And at the end of our iteration, we increment `vertex_index` by 2, as we have added two vertexes.
+
+The resulting code should look something like this:
+
+```lua
+local inner_radius = 48  -- Inner hexagon
+local outer_radius = 96  -- Outer hexagon
+
+local inner_segment = {}  -- Inner hexagon
+local outer_segment = {}  -- Outer hexagon
+
+local vertex_index = 0
+for i = 0, 5 do  -- We want to go from angle 0 to 2π, skipping by 2π / 6, making a hexagon
+  local angle = math.tau * i / 6
+
+  local y, x = math.sincos(angle)  -- y and x positions on the unit circle
+
+  table.insert(computed_vertexes, {x * inner_radius, y * inner_radius})  -- Vertex for the inner hexagon
+  table.insert(computed_vertexes, {x * outer_radius, y * outer_radius})  -- Vertex for the outer hexagon
+
+
+  table.insert(inner_segment, vertex_index)  -- Adding the vertex to the segment forming the inner hexagon
+  table.insert(outer_segment, vertex_index + 1)  -- Adding the vertex to the segment forming the outer hexagon
+  table.insert(computed_segments, {vertex_index, vertex_index + 1})  -- Line joining the corresponding vertexes of the inner and outer hexagons
+
+  vertex_index = vertex_index + 2
+end
+```
+
+Because of the way we generated the segments, at the end of the for-loop we add the last vertex to the respective hexagons. But, we need to close the loop. For that, we need to add the first vertex of the respective rings to the respective segments. **We also need to add these two segments to the `computed_segments` table.** After the for-loop, we can add them by doing this:
+
+```lua
+table.insert(inner_segment, 0)  -- The first vertex of the inner hexagon has the index of 0
+table.insert(outer_segment, 1)  -- The first vertex of the outer hexagon has the index of 1, as it was generated after that of the inner hexagon
+
+table.insert(computed_segments, inner_segment)
+table.insert(computed_segments, outer_segment)
+```
+
+At the end, we add the mesh made up of the generated vertexes and segments.
+
+```lua
+table.insert(meshes, {
+  vertexes = computed_vertexes,
+  segments = computed_segments
+})
+```
+
+### Creating the entity and assigning it the mesh
+
+Now, go to `level.lua`, and start by creating an entity at position `(0fx, 0fx)` (or any other position that you'd like). Next, set the entity's mesh to the one we just created.
+
+```lua
+local id = pewpew.new_customizable_entity(0fx, 0fx)
+pewpew.customizable_entity_set_mesh(id, "/dynamic/graphics.lua", 0)  -- Change the filename if needed
+```
+
+:::note
+
+Setting level size and creating a player is optional.
+
+:::
+
+Run the `ppl-utils` executable and open your level at [http://localhost:9000/pewpew.html](http://localhost:9000/pewpew.html)
+
+You should see the following:
+![Initial mesh](/img/60fps-tutorial/initial_result.png)
+
+If you don't, you might have made a mistake somewhere! Check the steps to make the mesh again and check for mistakes.
+
+## Animating the mesh
+
+Let's get into animating our mesh! For this tutorial, we will have the inner hexagon rotating counter-clockwise and the outer hexagon rotating clockwise.
+
+To do this, we need multiple "meshes" that we will set our entity to.
+
+:::tip
+
+We are moving our initial mesh code into another for-loop. This lets us achieve an animation by creating multiple versions of our hexagon that we just made. If you notice any problems, make sure you moved the local computed segment and vertex variables into the first for-loop!
+
+:::
+
+In your mesh file, change the for-loop to the following:
+
+```lua
+local inner_radius = 48  -- Inner hexagon
+local outer_radius = 96  -- Outer hexagon
+
+for frame = 0, 59 do  -- Our animation will have 60 frames. We want the hexagons to make a full rotation each 60 frames (2 seconds). This does not mean the animation is 60 FPS yet!
+  -- Tables for our mesh vertexes, segments
+  local computed_vertexes, computed_segments = {}, {}
+
+  local inner_segment = {}  -- Inner hexagon
+  local outer_segment = {}  -- Outer hexagon
+
+  local vertex_index = 0
+    for i = 0, 5 do  -- We want to go from angle 0 to 2π, skipping by 2π / 6, making a hexagon
+    local angle = math.tau * i / 6
+
+    local y, x = math.sincos(angle)  -- y and x positions on the unit circle
+
+    table.insert(computed_vertexes, {x * inner_radius, y * inner_radius})  -- Vertex for the inner hexagon
+    table.insert(computed_vertexes, {x * outer_radius, y * outer_radius})  -- Vertex for the outer hexagon
+
+
+    table.insert(inner_segment, vertex_index)  -- Adding the vertex to the segment forming the inner hexagon
+    table.insert(outer_segment, vertex_index + 1)  -- Adding the vertex to the segment forming the outer hexagon
+    table.insert(computed_segments, {vertex_index, vertex_index + 1})  -- Line joining the corresponding vertexes of the inner and outer hexagons
+
+    vertex_index = vertex_index + 2
+  end
+
+  table.insert(inner_segment, 0)  -- The first vertex of the inner hexagon has the index of 0
+  table.insert(outer_segment, 1)  -- The first vertex of the outer hexagon has the index of 1, as it was generated after that of the inner hexagon
+
+  table.insert(computed_segments, inner_segment)
+  table.insert(computed_segments, outer_segment)
+
+  table.insert(meshes, {
+    vertexes = computed_vertexes,
+    segments = computed_segments
+  })
+end
+```
+
+As you can see, the real mesh generation code is pretty much the same, just that we repeat it several times instead, making it have frames!
+
+Now, most importantly, we need to change the way we get the points of our hexagon. Since we want the outer hexagon to turn clockwise and the inner one counter-clockwise, we need to change the angles depending on which frame we are on. This angle offset can be calculated like so:
+
+```lua
+local angle_offset = math.tau * frame / 60
+```
+
+Since each frame is going to have a specific angle offset, we can add that to our initial angles, meaning we have to change this line:
+
+```lua
+local y, x = math.sincos(angle)
+```
+
+into
+
+```lua
+local y1, x1 = math.sincos(angle + angle_offset)
+```
+
+And add a new line below it like so:
+
+```lua
+local y2, x2 = math.sincos(angle - angle_offset)
+```
+
+We will use `x2` and `y2` for the outer hexagon. To do this, replace the `x * outer_radius` and `y * outer_radius` coordinates for the outer hexagon with `x2 * outer_radius` and `y2 * outer_radius` respectively.
+
+We now have 60 frames of meshes that we can use to animate our entity. To do this, we need to use an index which will increase every tick, and use that to set the entity's mesh. This can be done like so:
+
+```lua
+local tick = 0
+pewpew.entity_set_update_callback(id, function()
+  -- We have 60 frames.
+  -- The index of the 60th frame is 59. (Although we are using Lua, mesh and sound indexes start from 0 in PewPew Live API.)
+  -- Loop when we have exceeded past the last frame by using the modulo operator % in Lua.
+  pewpew.customizable_entity_set_mesh(id, "/dynamic/graphics.lua", tick % 60)
+
+  tick = tick + 1
+end)
+```
+
+The code is pretty self-explanatory. We increment the index every tick and use that index to set the mesh. Since the meshes we have generated have small changes in them, doing this creates an animation.
+
+The result should look something like this:
+
+<ReactPlayer
+  controls
+  playing
+  loop
+  url="/ppl-docs/video/60fps-tutorial/30fps.mp4"
+/>
+
+As you can see, this animation is running at only 30 frames per second. An animation running at 30 FPS will not look good with the rest of the level as the level might have other content that moves. And as you already know, position transformation is interpolated by PewPew Live. This means that, even though the level runs at 30 ticks per second, the game will interpolate the graphics and display them at 60 FPS, 90 FPS, and so on (the game interpolates the graphics as per the refresh rate of the device, which will usually be higher than 30Hz). To ensure that the difference between the rest of the level and our mesh animation is minimal, we have to make our mesh animation run at least at 60 FPS.
+
+## Making the animation 60 FPS
+
+Open your mesh file and replace the line
+
+```lua
+for frame = 0, 59 do  -- 60 frames
+  -- Code that generates the meshes
+end
+```
+
+with
+
+```lua
+for frame = 0, 119 do  -- 120 frames
+  -- Code that generates the meshes
+end
+```
+
+and replace the line
+
+```lua
+local angle_offset = math.tau * frame / 60
+```
+
+with
+
+```lua
+local angle_offset = math.tau * frame / 120
+```
+
+The new code will create 120 frames or meshes for us.
+
+If you save the files and run your level, you might notice that the animation is getting reset halfway through. This is because at the 60th frame, we have gone only 50% through the animation.
+
+Since we now have 120 frames, we need to change the code in `level.lua` to account for this change. Open `level.lua` and change the line
+
+```lua
+pewpew.customizable_entity_set_mesh(id, "/dynamic/graphics.lua", tick % 60)
+```
+
+to
+
+```lua
+pewpew.customizable_entity_set_mesh(id, "/dynamic/graphics.lua", tick % 120)
+```
+
+The new code now shows the complete animation when running the level. However, it is visibly slower. Why is this the case? Remember, in the previous case, the variable `angle_offset` was increasing by `2π/60` every frame. Now, it is increasing by `2π/120` every frame. You might be wondering why we did this. This is because to achieve a 60 FPS animation that runs with the same speed, we need to have double the amount of frames that we had previously. We now just need to speed the animation back to its original speed.
+
+Open `level.lua` and change
+
+```lua
+pewpew.customizable_entity_set_mesh(id, "/dynamic/graphics.lua", tick % 120)
+```
+
+to
+
+```lua
+pewpew.customizable_entity_set_mesh(id, "/dynamic/graphics.lua", (tick * 2) % 120)
+```
+
+This should make the animation return to its original speed, as we are skipping every other frame. However, if you save the files and run your level, you will notice no change between the current animation and the one we had at the start. You would in fact be right, there is no difference between the two. Our animation still runs at 30 FPS. This is where flipping meshes comes into play.
+
+Open `level.lua` and replace
+
+```lua
+pewpew.customizable_entity_set_mesh(id, "/dynamic/graphics.lua", (tick * 2) % 120)
+```
+
+with
+
+```lua
+pewpew.customizable_entity_set_flipping_meshes(id, "/dynamic/graphics.lua", (tick * 2) % 120, (tick * 2 + 1) % 120)
+```
+
+When we set flipping meshes of an entity, that entity goes over the two specified meshes in a single game tick. This means that, in the first game tick, it will have the mesh at `index 0` for half a tick and will have the mesh at `index 1` for the remaining half of the tick. In the next tick, we are resetting the flipping meshes. The expression `tick * 2` now has a value of `2`. The entity now has the mesh at `index 2` for half a tick and has the mesh at `index 3` for half a tick. Notice that we have gone over 4 meshes in just 2 game ticks (2 meshes per game tick)! The way in which we have used this creates an animation that runs at 60 FPS. Now, if you **save the files and run your level**, you'll notice that it is a lot smoother than our initial animation. It is exactly twice as smooth. It might look something like this:
+
+<ReactPlayer
+  controls
+  playing
+  loop
+  url="/ppl-docs/video/60fps-tutorial/60fps.mp4"
+/>
+
+Congratulations! You have successfully made an animation that runs at 60 frames per second. I hope that you were able to understand this fairly well. Now, experiment with your code and make creative animations. The files for the complete animation can be found [here](https://github.com/pewpewlive/ppl-utils/tree/master/levels/sample_animation).
