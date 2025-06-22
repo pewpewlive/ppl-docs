@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkppl_docs=self.webpackChunkppl_docs||[]).push([[7413],{5587:s=>{s.exports=JSON.parse('[{"label":"first","permalink":"/ppl-docs/blog/tags/first","count":1}]')}}]);
