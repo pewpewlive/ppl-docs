@@ -6,7 +6,6 @@ sidebar_position: 2
 
 In PewPew Live, a mesh is a collection of lines in 3D.
 
-
 To create a mesh, you need to list the coordinates of the points making up the model, and how the points are linked.
 Lua scripts describing meshes needs to create a table called `meshes`. That table must contain one or more meshes.
 
@@ -47,7 +46,11 @@ The _optional_ `colors` field contains the colors of each vertexes. If the `colo
 0xff000000 -- fully transparent red
 ```
 
-Note that all meshes are rendered with additive blending.
+:::note
+
+All meshes are rendered with additive blending.
+
+:::
 
 ## Procedural rendering
 
