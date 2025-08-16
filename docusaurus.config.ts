@@ -75,7 +75,7 @@ const config: Config = {
       additionalLanguages: ["json", "lua"],
     },
   } satisfies Preset.ThemeConfig,
-  themes: [require.resolve("@easyops-cn/docusaurus-search-local")],
+  plugins: [require.resolve('docusaurus-lunr-search')],
 }
 
 export default config
