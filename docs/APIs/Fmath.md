@@ -110,3 +110,19 @@ fmath.tau(): FixedPoint
 ```
 Returns τ (aka 2π).
 
+
+---
+### `exp()`
+```tsx
+fmath.exp(x: FixedPoint): FixedPoint
+```
+Returns e^x, the base-e exponential of x.
+
+
+---
+### `ln()`
+```tsx
+fmath.ln(x: FixedPoint): FixedPoint
+```
+Returns the natural logarithm of x.
+

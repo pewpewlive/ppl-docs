@@ -2088,6 +2088,30 @@
 "comment":"Returns τ (aka 2π).",
 "parameters": [
 ]
+},
+{
+"return_types": [
+{
+"type":"FixedPoint"}],
+"func_name":"exp",
+"comment":"Returns e^x, the base-e exponential of x.",
+"parameters": [
+{
+"name":"x",
+"type":"FixedPoint"}
+]
+},
+{
+"return_types": [
+{
+"type":"FixedPoint"}],
+"func_name":"ln",
+"comment":"Returns the natural logarithm of x.",
+"parameters": [
+{
+"name":"x",
+"type":"FixedPoint"}
+]
 }]
 }
 ]
