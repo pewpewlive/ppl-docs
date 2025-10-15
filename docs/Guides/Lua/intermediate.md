@@ -24,7 +24,7 @@ Before we begin in our first steps to making a level, it is crucial to understan
 
 **Let's take a look...**
 
-![PewPew Live API Functions](https://i.imgur.com/cudNZOp.png)
+![PewPew Live API Functions](/img/intermediate/cudNZOp.png)
 
 These are some of the functions that you will be using in PewPew Live! I suggest giving it a lookover, and try to see what it all means! Whenever you use a function in PewPew's library (API), you MUST put `pewpew.` infront of it!
 
@@ -34,7 +34,7 @@ So you see, `print(String str)` would be typed in your code as `pewpew.print(Str
 
 **Another main part of the API is the Fmath library!**
 
-![PewPew Live API Fmath](https://i.imgur.com/S3KoZf8.png)
+![PewPew Live API Fmath](/img/intermediate/S3KoZf8.png)
 
 These are more functions in PewPew Live, but slightly different. To use these functions, you MUST put `fmath.` infront of it!
 
@@ -50,7 +50,7 @@ Another main difference I should note is their decimals! It's a little strange, 
 
 **The last main part that I need to cover is the Enums section of the API**
 
-![PewPew Live API Enums](https://i.imgur.com/6iA5ayl.png)
+![PewPew Live API Enums](/img/intermediate/6iA5ayl.png)
 
 So what is an `Enum`? `Enum` stands for _Enumerator_, and is just a fancy way of talking about a list of items and properties. So here is the list of enemies and the properties of enemies, AKA the `Enums`, that a person can access and use. Again, you need to put `pewpew.` infront of these when you use them. A quick example of a reference to a specific enemy would be `pewpew.MothershipType.THREE_CORNERS`. This piece of code references the pink triangles (motherships) that you see in Eskiv.
 
@@ -62,19 +62,19 @@ So what is an `Enum`? `Enum` stands for _Enumerator_, and is just a fancy way of
 
 You will need to extract the file, and then you will enter it. You will see two files, a folder and an `.exe` file. That `.exe` is very important to running your level, keep it in mind!
 
-![Windows explorer window in ppl-utils directory](https://i.imgur.com/CrvXuXT.png)
+![Windows explorer window in ppl-utils directory](/img/intermediate/CrvXuXT.png)
 
 **You will then see a bunch of files, and a folder. You do NOT need to worry about these files at all! Just the folder! The `levels` folder is where all custom levels are stored! So that is the folder you enter into next!**
 
-![Windows explorer window in ppl-utils/content directory](https://i.imgur.com/JVRk9P6.png)
+![Windows explorer window in ppl-utils/content directory](/img/intermediate/JVRk9P6.png)
 
 **As you can see below, there are some levels already here! The developer, JF, put these levels here as examples for level creators to look at while they work! This is where you will create your level.**
 
-![Windows explorer window in ppl-utils/content/levels directory](https://i.imgur.com/mgmeZ0g.png)
+![Windows explorer window in ppl-utils/content/levels directory](/img/intermediate/mgmeZ0g.png)
 
 **So all you need to do is make a new folder. I'm going to call my folder TUTORIAL_LEVEL, although you can call your folder whatever you like.**
 
-![Windows explorer window in ppl-utils/content/levels directory and creating TUTORIAL_LEVEL directory](https://i.imgur.com/OoUkG9m.png)
+![Windows explorer window in ppl-utils/content/levels directory and creating TUTORIAL_LEVEL directory](/img/intermediate/OoUkG9m.png)
 
 And there you go! You now have the location of your custom level, and all the levels are nice and organized! Time for the fun stuff!
 
@@ -84,11 +84,11 @@ And there you go! You now have the location of your custom level, and all the le
 
 You can either open up just your level file in your text editor, or you can open the folder that contains all the levels. This is helpful for looking at other levels while you code! So head back to this screen below:
 
-![Windows explorer window in ppl-utils/content directory](https://i.imgur.com/JVRk9P6.png)
+![Windows explorer window in ppl-utils/content directory](/img/intermediate/JVRk9P6.png)
 
 And open the levels folder with your text editor! If you need help with this, feel free to reach out for help! If you're ready, then proceed down below!
 
-![Visual Studio Code window open in ppl-utils/content/levels directory](https://i.imgur.com/BfYNE64.png)
+![Visual Studio Code window open in ppl-utils/content/levels directory](/img/intermediate/BfYNE64.png)
 
 As pointed out by the very helpful green arrow, my level is on the left. The folder was initially empty. You need create a new script that will be your main level script. It HAS to be called `level.lua`. This is how PewPew Live enters into your level and runs it. It might change in the future, but it is good practice to keep consistency. And with the script made, you have an empty canvas. What's next?
 
@@ -127,7 +127,7 @@ This piece of code sets the ship as a variable that you can reference later on! 
 
 **And there you have it! Down below is the final product.**
 
-![](https://i.imgur.com/VHV6s29.png)
+![](/img/intermediate/VHV6s29.png)
 
 **Now there's one more step before we can test out our level! We need something called a `manifest`**
 
@@ -145,23 +145,23 @@ In the manifest you need to put this piece of code:
 
 You can look at it and kind of get a sense of what's going on, but I will brief you on it. You put your level name where `"LEVEL_NAME"` is **INSIDE** the quotation `""` marks! You can do the same with the level description, inside the quotation marks and brackets `[""]`! See the `"entry_point"`? That's why we named the main script `level.lua`. The game enters through that script and runs your level. And that is _all_ you need to know about this new file. Down below is the manifest for my tutorial level.
 
-![](https://i.imgur.com/eMCp8e5.png)
+![](/img/intermediate/eMCp8e5.png)
 
 You are done! You can run your level!
 
 **Ready to take it out for a spin? Good! Remember that `.exe` I mentioned some time back? Yeah, we need that. Head back to the screen below.**
 
-![](https://i.imgur.com/CrvXuXT.png)
+![](/img/intermediate/CrvXuXT.png)
 
 You need to run the ppl-utils file. It will open a window, and your computer will warn you about this file. Go ahead and run the file anyway, and you will be able to try out your level! You should get something like below:
 
-![](https://i.imgur.com/0GVpONe.png)
+![](/img/intermediate/0GVpONe.png)
 
 **Your levels are being run! Now you need to go to the website that the screen above is telling you!** The website to run your levels is [http://localhost:9000/pewpew.html](http://localhost:9000/pewpew.html)
 
 You should get a screen like this:
 
-![](https://i.imgur.com/Diaobu9.png)
+![](/img/intermediate/Diaobu9.png)
 
 **As you can see, the manifest dictated what name my level would show as.**
 
