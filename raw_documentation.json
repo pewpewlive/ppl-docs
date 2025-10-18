@@ -33,7 +33,11 @@
 "KAMIKAZE",
 "BONUS_IMPLOSION",
 "MACE",
-"PLASMA_FIELD"]
+"PLASMA_FIELD",
+"LASERBEAM",
+"EXPLODER",
+"EXPLODER_EXPLOSION",
+"WEAPON_ZONE"]
 },
 {
 "name":"MothershipType",
@@ -1304,6 +1308,48 @@
 {
 "name":"dx",
 "type":"FixedPoint"}
+]
+},
+{
+"return_types": [
+{
+"type":"EntityId"}],
+"func_name":"new_weapon_zone",
+"comment":"Creates a new Weapon Zone at the location `x`,`y` with the respective weapon configuration, and another optional configuration table, that has the following keys:- `number_of_sides` - number of sides for the zone (default 12), right now *only* supports a value of 6.- `radius` - the radius in fx of the weapon zone (default 80fx).Default behavior of leaving a Weapon Zone is to *reset* the weapon configuration of each ship to **no** weapon!",
+"parameters": [
+{
+"name":"x",
+"type":"FixedPoint"}
+,
+{
+"name":"y",
+"type":"FixedPoint"}
+,
+{
+"name":"cannon",
+"type":"Int32",
+"enum": "CannonType"
+}
+,
+{
+"name":"frequency",
+"type":"Int32",
+"enum": "CannonFrequency"
+}
+,
+{
+"name":"config",
+"type":"Map",
+"map_entries": [
+{
+"name":"radius",
+"type":"FixedPoint"}
+,
+{
+"name":"number_of_sides",
+"type":"Int32"}
+]
+}
 ]
 },
 {

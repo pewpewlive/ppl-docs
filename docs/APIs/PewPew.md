@@ -42,6 +42,10 @@ The `pewpew` library contains all the functions for configuring levels and manag
  * BONUS_IMPLOSION
  * MACE
  * PLASMA_FIELD
+ * LASERBEAM
+ * EXPLODER
+ * EXPLODER_EXPLOSION
+ * WEAPON_ZONE
 ### MothershipType
  * THREE_CORNERS
  * FOUR_CORNERS
@@ -890,6 +894,27 @@ pewpew.new_ufo(
 ): EntityId
 ```
 Creates a new UFO at the location `x`,`y` moving horizontally at the speed of `dx`, and returns its entityId.
+
+
+---
+### `new_weapon_zone()`
+```tsx
+pewpew.new_weapon_zone(
+  x: FixedPoint,
+  y: FixedPoint,
+  cannon: int,
+  frequency: int,
+  config: table {
+    radius: FixedPoint,
+    number_of_sides: int
+  }
+): EntityId
+```
+Creates a new Weapon Zone at the location `x`,`y` with the respective weapon configuration, and another optional configuration table, that has the following keys:
+- `number_of_sides` - number of sides for the zone (default 12), right now *only* supports a value of 6.
+- `radius` - the radius in fx of the weapon zone (default 80fx).
+
+Default behavior of leaving a Weapon Zone is to *reset* the weapon configuration of each ship to **no** weapon!
 
 
 ---
