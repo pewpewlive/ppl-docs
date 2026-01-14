@@ -1287,7 +1287,7 @@ pewpew.customizable_entity_configure_wall_collision(
   collision_callback: function
 )
 ```
-`collide_with_walls` configures whether the entity should stop when colliding with walls. If `collision_callback` is not nil, it is called anytime a collision is detected. The callback gets called with the entity id of the entity withthe callback, and with the normal to the wall.
+`collide_with_walls` configures whether the entity should stop when colliding with walls. If `collision_callback` is not nil, it is called anytime a collision is detected. The callback gets called with the entity id of the entity with the callback, and with the normal to the wall.
 
 > Example:
 > ```lua
@@ -1295,7 +1295,7 @@ pewpew.customizable_entity_configure_wall_collision(
 >   pewpew.print("A wall collision happened with entity " .. entity_id)
 > end
 > local id = pewpew.new_customizable_entity(100fx, 100fx)
-> pewpew.customizable_entity_configure_wall_collision(id, my_wall_collision_callback)
+> pewpew.customizable_entity_configure_wall_collision(id, true, my_wall_collision_callback)
 > ```
 
 ---

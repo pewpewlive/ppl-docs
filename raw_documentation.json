@@ -1882,7 +1882,7 @@
 "return_types": [
 ],
 "func_name":"customizable_entity_configure_wall_collision",
-"comment":"`collide_with_walls` configures whether the entity should stop when colliding with walls. If `collision_callback` is not nil, it is called anytime a collision is detected. The callback gets called with the entity id of the entity withthe callback, and with the normal to the wall.",
+"comment":"`collide_with_walls` configures whether the entity should stop when colliding with walls. If `collision_callback` is not nil, it is called anytime a collision is detected. The callback gets called with the entity id of the entity with the callback, and with the normal to the wall.",
 "parameters": [
 {
 "name":"entity_id",
