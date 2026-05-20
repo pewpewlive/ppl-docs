@@ -20,7 +20,7 @@ function floatToFixedpoint(input: string): string {
 }
 
 export default function FxConverter() {
-  const outputRef = useRef(null)
+  const outputRef = useRef<HTMLElement>(null)
 
   return (
     <div>
@@ -28,7 +28,9 @@ export default function FxConverter() {
         type="text"
         defaultValue="2.718"
         onChange={(event) => {
-          outputRef.current.innerText = floatToFixedpoint(event.target.value)
+          if (outputRef.current) {
+            outputRef.current.innerText = floatToFixedpoint(event.target.value)
+          }
         }}
       />
       <br />
