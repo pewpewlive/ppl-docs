@@ -2,75 +2,76 @@
 sidebar_position: 2
 ---
 
-# Level making on mobile
+# Level Creation on Mobile
 
 :::info[Author]
 
-Tutorial created by [mxx987](https://github.com/mxx987).
+Tutorial created by [mxx987](https://github.com/mxx987). Refined and edited by [tasty kiwi](https://github.com/Tasty-Kiwi).
 
 :::
 
-### before starting
+## Before starting
 
-You should have a ppl account that you can access easily, you CAN'T create levels on mobile if you don't have a ppl account.
+You should have an easily accessible PewPew Live account. Creating levels on mobile is not possible without a PPL account.
 
 :::note
 
-if something like this _no image yet_ pops up then it's ether the browser you currently are using can't upload folders or your manifest.json file is bugged. if you are 100% sure your manifest.json file is correct then use another browser
+If you encounter an error message like `Error: Error: manifest.json not found`, it could be due to the browser you’re currently using not being able to upload folders or a bug in your manifest.json file. If you’re certain that your manifest.json file is correct, try using a different browser.
 
 :::
 
-### Setting up
+## Setting up
 
-:::note
+Before doing anything, you should install these apps and things. Some of them are not necessary, but it would make level making more convenient.
 
-Before doing anything you should install these apps and things, some of them are not necessary but it would make level making more convenient
-:::
+1. Install the ppl-utils level samples. This is the “levels” folder, and you should install them to make level creation more convenient. You can see examples of levels and use code from them. You can get it [here](https://github.com/pewpewlive/ppl-utils/tree/master/levels).
+2. Install any file manager app. This is necessary to create levels on mobile devices because without it, you can’t change the name, file type, or view your code. So, it’s better to get one.
+3. Install QuickEdit. [Google Play](https://play.google.com/store/apps/details?id=com.rhmsoft.edit) | [App Store](https://apps.apple.com/us/app/quickeditor-text-code/id1450712528)
 
-first, install ppl-utils level samples: this is the "levels" folder, you should install them to make level making more convenient and you can see examples for levels and use code from them. you can get it [Here](https://github.com/pewpewlive/ppl-utils/tree/master/levels)
+## Coding the level
 
-second, install any file manager: this is NEEDED to make levels in mobile because without it you can't change the name,file type, or see your code Soo it's better to get one
+1. Open any file manager application.
+2. Copy the `sample_advanced_level` or any other sample level.
+3. Rename the copied folder to something that matches your level name.
+4. Open any text editor or app (such as QuickEdit).
+5. Start coding your level.
+6. If you have any questions, ask in the Discord server.
+7. Read the documentation.
+8. Complete your level.
 
-third, install quick edit: this is an app found from Google play store that allows you to change code without having to rename or do anything else, not needed but it's convenient Soo go try it. it has ads but it's fine
+## Final touches
 
-### Coding the level
-
-now that we set up everything, go into any file manager app and copy the "sample_advanced_level" or any other sample level of your chose and rename the coppy folder into anything ideally your level name your planning
-
-now that we have our level folder we should go into any text maker/editor app (or quick edit if you installed it) and start coding your level, ask questions in the discord server. read the docs and finish your level
-
-## finale touchs
-
-now that You did your first level, we should change the manifest.json code to name your level, the code should look like this
+Now that you've created your first level, we should change the `manifest.json` code to name your level. The code should look like this:
 
 ```js
 {
-  "name":"Your level", // level name
-  "descriptions":["descriptions goes here"], // level description
-  "information":"information goes here", // level information
-  "entry_point":"level.lua", // don't change this!
-  "has_score_leaderboard":true, // if the level is casual or has leader boards
-  "rank_thresholds_1p":{"bronze":3500, "silver":6000, "gold":9000} // score needed to get bronze,silver,gold
+  "name": "Your level", // level name
+  "descriptions": ["descriptions goes here"], // level description
+  "information": "information goes here", // level information
+  "entry_point": "level.lua", // don't change this!
+  "has_score_leaderboard": true, // if the level is casual or has leader boards
+  "rank_thresholds_1p": { "bronze": 3500, "silver": 6000, "gold": 9000 } // score needed to get bronze, silver, gold
 }
 ```
 
-change it to fit your level
+Change it to fit your level's needs.
 
-### playtesting and uploading
+## Uploading the level
 
-now that we finished our level, we need to play test it and upload it when we are done
+Now that we’ve completed our level, we need to test it and upload it once we’re done.
 
-to do that first go into the "account" button and tap it ![](/img/mobile-tutorial/account-image.png) this should take you to the sign in page Soo sign in,if you are signed In. go into the "manage my levels" button ![](/img/mobile-tutorial/sel-manger-image.png) and press it, it should take you to a page that looks like this ![](/img/mobile-tutorial/page-looks-image.png), if you want to create a level go into the "Select folder" and tap it ![](/img/mobile-tutorial/creating-image.png), it should take you to the files app. select your level folder and press "use this folder" after this wait for a bit and now you have your level.
+1. Go to the [PewPew Live website](https://pewpew.live/account) and sign in with your account.
+2. Navigate to the **Manage your custom levels** section.
+  ![Account page in PPL's website](/img/mobile-tutorial/manage-custom-levels.png)
+3. To create a new level, click on the **Select Folder** button and select your level folder in the files app.
+  ![Select folder button](/img/mobile-tutorial/select-folder.png)
+4. To update an existing level, go to your level name and tap **Manage**, then scroll down to the **Update Level** section and click on the **Select Folder** button to select your folder.
+  ![Select folder button](/img/mobile-tutorial/select-folder.png)
+5. To upload your level to the community, go to the manage your level page, scroll down to the **Stats** section, and click on the **Request a review of the level** button.
+  ![Request review button](/img/mobile-tutorial/request-review.png)
 
-to update your level go into your level name and tap "manege" ![](/img/mobile-tutorial/manage-image.png), this should take you to a page, scroll down until you see "//update level" section, tap the "select folder" button and select your folder and wait ![](/img/mobile-tutorial/creating-image.png). this should let you update your level without having to create more level or other stuff
+6. Wait for the review process to be completed. This may take some time, so be patient.
 
-Uploading your level to the world
-to upload your level to the community go to the manage your level page and scroll until you see the "//stats" section, this displays information about the level and let's you download your level, below the stats there is a "request a review of the level" ![](/img/mobile-tutorial/request-image.png) press it and wait until the page reloads, this sends the level for the dev team to see and approve, this can take up from a couple of hours to day Soo please be patient :)
+You can find your level on the Experimental tab. If your level appears blank or doesn’t have any information, it usually indicates that the level code is broken.
 
-:::note
-you can find your level on the Experimental tap and if your level appears blank or doesn't have anything, it usually means that the level code is broken.
-:::
-
-Congratulations! You have successfully made your (maybe) first level, and without PC. you can now play it and have fun, try to improve your levels and don't be shy to try to get feedback.
-
-that is all.
+Congratulations! You have successfully made your (maybe) first level, and without PC, you can now play it and have fun, try to improve your levels, and don't be shy to try to get feedback.
