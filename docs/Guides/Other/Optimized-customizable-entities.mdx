@@ -2,13 +2,13 @@
 sidebar_position: 3
 ---
 
+# Optimized Customizable Entities
+
 :::info[Author]
 
 Tutorial created by [WinterNox](https://github.com/WinterNox).
 
 :::
-
-# Optimized Customizable Entities
 
 ## Customizable Entities
 
@@ -94,9 +94,9 @@ If you need a basic `manifest.json`, here is a template you can use:
 
 ```json
 {
-  "name":"Sample: Optimized entities",
-  "descriptions":["An optimized way of creating entities."],
-  "entry_point":"level.lua"
+  "name": "Sample: Optimized entities",
+  "descriptions": ["An optimized way of creating entities."],
+  "entry_point": "level.lua"
 }
 ```
 
@@ -254,7 +254,7 @@ If you save the files and run your level, you should see the yellow square movin
 
 ### Wall Collision Callback
 
-Currently, our entity will keep moving in the same direction indefinitely. To fix that, let us create a wall collision callback for our entity. We want it to switch directions when it collides with a wall. Below the declaration of the table `bafs_entity_data`  and above the declaration of the function `new_baf`, make a new function `baf_entity_wall_collision_callback(entity_id, wall_normal_x, wall_normal_y)`. This function, when set as our entity's wall collision callback, is called every time that our entity collides with a wall, with the entity's ID and information regarding the normal to the wall. We obtain the entity ID and normal information through our function's parameters. In this tutorial, we do not make use of the normal information.
+Currently, our entity will keep moving in the same direction indefinitely. To fix that, let us create a wall collision callback for our entity. We want it to switch directions when it collides with a wall. Below the declaration of the table `bafs_entity_data` and above the declaration of the function `new_baf`, make a new function `baf_entity_wall_collision_callback(entity_id, wall_normal_x, wall_normal_y)`. This function, when set as our entity's wall collision callback, is called every time that our entity collides with a wall, with the entity's ID and information regarding the normal to the wall. We obtain the entity ID and normal information through our function's parameters. In this tutorial, we do not make use of the normal information.
 
 Start by:
 
@@ -385,7 +385,7 @@ We are accessing this table as `entity_data` in our callbacks and accessing the 
 
 ```lua
 bafs_entity_data[entity_id] = {
-  x_vel = 5fx, 
+  x_vel = 5fx,
   hp = 3
 }
 ```
@@ -396,12 +396,12 @@ This lets us access the values inside using dot notation as `entity_data.x_vel` 
 
 Upon spawning 1200 of our entities, here is what the memory usage looks like, as returned by [`pewpew.print_debug_info()`](https://pewpewlive.github.io/ppl-docs/APIs/PewPew#print_debug_info) (there can be slight differences in memory usage due to variable names):
 
-| Method | Memory Used (Bytes) | Implementation Details |
-| ------ | ------ | --- |
-| Unoptimized A | 322,618 | The callback functions are declared inside the spawn function. |
-| Unoptimized B | 293,920 | The callback functions **except the player collision callback function** are declared inside the spawn function. The player collision callback of our entity does not require any custom information and hence the function can be declared beforehand. |
-| Optimized (Alternative) | 272,385 | The callback functions are declared beforehand and a table of the form `{x_vel = 5fx, hp = 3}` is used to store custom information about entities. |
-| Optimized | 224,084 | The callback functions are declared beforehand and a table of the form `{5fx, 3}` is used to store custom information about entities. |
+| Method                  | Memory Used (Bytes) | Implementation Details                                                                                                                                                                                                                                  |
+| ----------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Unoptimized A           | 322,618             | The callback functions are declared inside the spawn function.                                                                                                                                                                                          |
+| Unoptimized B           | 293,920             | The callback functions **except the player collision callback function** are declared inside the spawn function. The player collision callback of our entity does not require any custom information and hence the function can be declared beforehand. |
+| Optimized (Alternative) | 272,385             | The callback functions are declared beforehand and a table of the form `{x_vel = 5fx, hp = 3}` is used to store custom information about entities.                                                                                                      |
+| Optimized               | 224,084             | The callback functions are declared beforehand and a table of the form `{5fx, 3}` is used to store custom information about entities.                                                                                                                   |
 
 By using the optimized approach, we save approximately 98,534 bytes (30.54% decrease) of memory compared to Unoptimized A and approximately 69,836 bytes (23.76% decrease) of memory compared to Unoptimized B. This relative difference increases with increase in the size and complexity of the callback functions.
 

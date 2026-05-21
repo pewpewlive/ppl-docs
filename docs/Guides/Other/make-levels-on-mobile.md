@@ -62,13 +62,13 @@ Now that weâ€™ve completed our level, we need to test it and upload it once weâ€
 
 1. Go to the [PewPew Live website](https://pewpew.live/account) and sign in with your account.
 2. Navigate to the **Manage your custom levels** section.
-  ![Account page in PPL's website](/img/mobile-tutorial/manage-custom-levels.png)
+   ![Account page in PPL's website](/img/mobile-tutorial/manage-custom-levels.png)
 3. To create a new level, click on the **Select Folder** button and select your level folder in the files app.
-  ![Select folder button](/img/mobile-tutorial/select-folder.png)
+   ![Select folder button](/img/mobile-tutorial/select-folder.png)
 4. To update an existing level, go to your level name and tap **Manage**, then scroll down to the **Update Level** section and click on the **Select Folder** button to select your folder.
-  ![Select folder button](/img/mobile-tutorial/select-folder.png)
+   ![Select folder button](/img/mobile-tutorial/select-folder.png)
 5. To upload your level to the community, go to the manage your level page, scroll down to the **Stats** section, and click on the **Request a review of the level** button.
-  ![Request review button](/img/mobile-tutorial/request-review.png)
+   ![Request review button](/img/mobile-tutorial/request-review.png)
 
 6. Wait for the review process to be completed. This may take some time, so be patient.
 
