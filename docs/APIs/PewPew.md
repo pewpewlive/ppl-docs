@@ -648,6 +648,9 @@ pewpew.new_bonus(
     speed_factor: FixedPoint,
     speed_offset: FixedPoint,
     speed_duration: int,
+    mace_radius: FixedPoint,
+    mace_rotation: FixedPoint,
+    mace_duration: int,
     taken_callback: function
   }
 ): EntityId
@@ -1327,15 +1330,15 @@ pewpew.customizable_entity_set_weapon_collision_callback(
   weapon_collision_callback: function
 )
 ```
-Sets the callback for when the customizable entity identified by `id` collides with a player's weapon. The callback gets called with the entity_id of the entity on which the callback is set, the player_index of the player that triggered the weapon, and the type of the weapon. The callback *must* return a boolean saying whether the entity reacts to the weapon. In the case of a bullet, this boolean determines whether the bullet should be destroyed.
+Sets the callback for when the customizable entity identified by `id` collides with a player's weapon. The callback gets called with the entity_id of the entity on which the callback is set, the player_index of the player that triggered the weapon, the type of the weapon, and the respective x and y parameters of a weapon: for bullets thats the movement vector, for explosions thats the position of the bomb. The callback *must* return a boolean saying whether the entity reacts to the weapon. In the case of a bullet, this boolean determines whether the bullet should be destroyed.
 
 > Example:
 > ```lua
 > local id = pewpew.new_customizable_entity(100fx, 100fx)
-> pewpew.customizable_entity_set_weapon_collision_callback(id, function(entity_id, player_index, weapon_type)
+> pewpew.customizable_entity_set_weapon_collision_callback(id, function(entity_id, player_index, weapon_type, x, y)
 >   pewpew.print("Collided with weapon from player: " .. player_index)
 >   if weapon_type == pewpew.WeaponType.BULLET then
->     pewpew.print("Collided with bullet!")
+>     pewpew.print("Collided with bullet moving at " .. x .. ", " .. y)
 >   end
 >   return true
 > end)
